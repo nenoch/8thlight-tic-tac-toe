@@ -1,2 +1,3 @@
 function Player() {
+  this.markedFields = [];
 }
