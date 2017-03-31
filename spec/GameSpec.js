@@ -38,5 +38,28 @@ describe("Game", function() {
 
   });
 
+  describe("#isGameOver", function() {
+
+    it("declare that a game is over when all fields are taken", function(){
+      game._currentBoard = ['X','O','X','O','X','O','X','O','X'];
+      expect(game.isGameOver()).toBe(true);
+    });
+
+    it("doesn't declare that a game is over when fields are still available", function(){
+      game._currentBoard = ['X','X',null,'O','X','O','X','O','X'];
+      expect(game.isGameOver()).toBe(false);
+    });
+
+  });
+
+  describe("#declareWinner", function() {
+
+    it("declare who's the winner", function(){
+      game._currentBoard = [null,null,null,'X','X','X',null,null,null];
+      expect(game.declareWinner()).toEqual('X');
+    });
+
+  });
+
 
 });
