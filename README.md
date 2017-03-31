@@ -9,10 +9,17 @@
 - A player wins if they claim all the fields in a row, column or diagonal
 - A game is over if a player wins
 - A game is over when all fields are taken
+- Players can enter a name
 
 ### How to play Tic-Tac-Toe locally
 
 ```
 $ git clone git@github.com:nenoch/tic-tac-toe.git
+
+// launch SpecRunner.html, right click 'Inspect' and play in the Console.
+
+$ var g = new Game(new Player('Mike'), new Player('Alan'))
+$ g.pickAfield(3)
+...
 
 ```
