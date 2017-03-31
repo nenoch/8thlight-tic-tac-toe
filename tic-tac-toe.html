@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tic tac Toe!</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class='container-fluid'>
+
+      <div id="form" method="post">
+        <label>Players</label>
+          <input id='playerX-name' type='text' placeholder='Player X Name'>
+          <input id='playerO-name' type='text' placeholder='Player O Name'>
+        <input class='submit-button' type='submit' value='Play!'>
+      </div>
+
+      <div id="board">
+
+        <div class="row">
+          <button class="field">0</button>
+          <button class="field">1</button>
+          <button class="field">2</button>
+        </div>
+        <div class="row">
+          <button class="field">3</button>
+          <button class="field">4</button>
+          <button class="field">5</button>
+        </div>
+        <div class="row">
+          <button class="field">6</button>
+          <button class="field">7</button>
+          <button class="field">8</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="src/jquery-3.1.1.min.js"></script>
+    <script src="src/interface.js"></script>
+    <script src="src/Player.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="src/Player.js"></script>
+  </body>
+</html>
