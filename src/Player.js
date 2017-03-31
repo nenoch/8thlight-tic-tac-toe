@@ -1,3 +1,3 @@
-function Player() {
-  this.markedFields = [];
+function Player(name) {
+  this.name = name;
 }

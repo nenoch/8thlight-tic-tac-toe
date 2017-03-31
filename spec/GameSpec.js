@@ -9,25 +9,31 @@ describe("Game", function() {
   describe("at start", function() {
 
     it("has two players", function() {
-      expect(game._playerO).toEqual(jasmine.any(Player));
-      expect(game._playerX).toEqual(jasmine.any(Player));
+      expect(game._O).toEqual(jasmine.any(Player));
+      expect(game._X).toEqual(jasmine.any(Player));
     });
 
   });
 
-  describe("#claimField", function(){
+  describe("#switchTurn", function(){
 
-    it("allows a player to claim a field", function(){
-      game.claimField('A1');
-      expect(game._playerO.markedFields).toContain('A1');
-      expect(game._fields).not.toContain('A1');
-
+    it("allows players to play one at the time", function(){
+      game.switchTurn();
+      expect(game._isXturn).toEqual(false);
     });
 
-    it("doesn't allows a player to claim a field if already taken", function(){
-      game.claimField('A1');
-      game.claimField('A1');
-      expect(game._playerO.markedFields).toEqual(['A1']);
+  });
+
+  describe("#pickAfield", function() {
+
+    it("allows the player to choose a field", function(){
+      game.pickAfield(2)
+      expect(game._currentBoard[2]).toEqual('X');
+    });
+
+    it("prevents a field to be selected twice during the game", function(){
+      game.pickAfield(2)
+      expect(game.pickAfield(2)).toEqual('You can\'t pick this field. Try with an empty one.');
     });
 
   });

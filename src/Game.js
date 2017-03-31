@@ -1,17 +1,20 @@
 function Game(playerO, playerX) {
-  this._playerO = playerO;
-  this._playerX = playerX;
-  this._fields = ['A1','A2','A3','B1','B2','B3','C1','C2','C3'];
+  this._O = playerO;
+  this._X = playerX;
+  this._currentBoard = [null,null,null,null,null,null,null,null,null];
+  this._isXturn = true;
 }
 
-Game.prototype.claimField = function(field) {
-  if (this._fields.includes(field)) {
-    var index = this._fields.indexOf(field);
-    this._fields.splice(index, 1);
-    this._playerO.markedFields.push(field);
-  }
-  else {
-    console.log("Field Not Available! Claim a different one!")
-  }
+Game.prototype.switchTurn = function () {
+  this._isXturn = !this._isXturn;
+};
 
+Game.prototype.pickAfield = function(num) {
+  var mark = this._isXturn ? 'X' : 'O';
+  if (this._currentBoard[num] === null) {
+    this._currentBoard[num] = mark;
+    this.switchTurn();
+  } else {
+    return 'You can\'t pick this field. Try with an empty one.';
+  }
 };
