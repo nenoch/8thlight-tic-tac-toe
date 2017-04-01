@@ -3,6 +3,7 @@ function Game(playerX, playerO) {
   this._currentBoard = [null,null,null,null,null,null,null,null,null];
   this._isXturn = true;
   this._currentPlayer = this.players[0];
+  this.mark;
 }
 
 Game.prototype.switchTurn = function () {
@@ -15,6 +16,9 @@ Game.prototype.pickAfield = function(num) {
   var mark = this._isXturn ? 'X' : 'O';
   if (this._currentBoard[num] === null) {
     this._currentBoard[num] = mark;
+    if (this._isGameOver()){
+      return this.gameOver
+    }
     this.declareWinner();
     this.gameOver();
     this.switchTurn();
