@@ -1,11 +1,13 @@
 $(document).ready(function() {
 
+
   $("#form").submit(function(event){
     event.preventDefault();
     var playerXname = $("input#playerX-name").val();
     var playerOname = $("input#playerO-name").val();
 
-    $("h3#messages").text("Welcome " + playerXname + " and " + playerOname + "!");
+    $("h3#messages").text("It's tic-tac-toe time " + playerXname + " and " + playerOname + "!");
+    $("#form").hide();
 
     var playerX = new Player(playerXname);
     var playerO = new Player(playerOname);
@@ -15,8 +17,8 @@ $(document).ready(function() {
     $('#0').click(function(){
       game.pickAfield(0);
       $('#0').text(game._currentBoard[0]);
-      game.declareWinner();
-      game.gameOver();
+      $("h2#end-of-game").text(game.declareWinner());
+      $("h2#end-of-game").text(game.gameOver());;
     });
 
     $('#1').click(function(){
@@ -74,6 +76,9 @@ $(document).ready(function() {
       game.declareWinner();
       game.gameOver();
     });
+
+    // $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
+
 
   });
 

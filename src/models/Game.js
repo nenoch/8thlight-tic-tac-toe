@@ -24,9 +24,8 @@ Game.prototype.pickAfield = function(num) {
 
 Game.prototype.gameOver = function () {
   if (this._isGameOver()) {
-    alert('GAME OVER. Thanks for playing!');
+    return 'GAME OVER. Thanks for playing!';
   }
-  return false;
 };
 
 Game.prototype._isGameOver = function () {
@@ -57,9 +56,8 @@ Game.prototype.declareWinner = function () {
     var c = winningCombos[i][2];
 
     if (this._currentBoard[a] && this._currentBoard[a] == this._currentBoard[b] && this._currentBoard[b] == this._currentBoard[c]) {
-      alert('The Winner is ' + this._currentBoard[a]);
+       return 'The Winner is ' + this._currentBoard[a];
     }
   }
-  return null;
 
 };

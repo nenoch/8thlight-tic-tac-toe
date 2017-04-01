@@ -23,8 +23,10 @@ describe("Game", function() {
     });
 
     it("prevents a field to be selected twice during the game", function(){
+      spyOn(window, 'alert');
       game.pickAfield(2)
-      expect(game.pickAfield(2)).toEqual('You can\'t pick this field. Try with an empty one.');
+      game.pickAfield(2)
+      expect(window.alert).toHaveBeenCalledWith('You can\'t pick this field. Try with an empty one.');
     });
 
   });
@@ -38,7 +40,7 @@ describe("Game", function() {
 
     it("doesn't declare that a game is over when fields are still available", function(){
       game._currentBoard = ['X','X',null,'O','X','O','X','O','X'];
-      expect(game.gameOver()).toBe(false);
+      expect(game.gameOver()).not.toBeTruthy();
     });
 
   });
@@ -47,7 +49,7 @@ describe("Game", function() {
 
     it("declare who's the winner", function(){
       game._currentBoard = [null,null,null,'X','X','X',null,null,null];
-      expect(game.declareWinner()).toEqual('The Winner is Mike');
+      expect(game.declareWinner()).toEqual('The Winner is X');
     });
 
   });

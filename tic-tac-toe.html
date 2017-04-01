@@ -13,14 +13,14 @@
 
     <div class='container-fluid'>
 
+      <h3 id="messages">Welcome! Enter your names and start playing!</h3>
+
       <form id="form" method="post">
         <label>Players</label>
           <input id='playerX-name' type='text' placeholder='Player X Name'>
           <input id='playerO-name' type='text' placeholder='Player O Name'>
         <input class='submit-button' type='submit' value='Play!'>
       </form>
-
-      <h3 id="messages">Hello!</h3>
 
       <div id="board">
 
@@ -41,6 +41,10 @@
         </div>
 
       </div>
+
+      <h4 id="update"></h4>
+      <h2 id="end-of-game"></h2>
+
 
     </div>
     <script src="src/models/Player.js"></script>

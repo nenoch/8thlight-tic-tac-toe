@@ -16,10 +16,8 @@
 ```
 $ git clone git@github.com:nenoch/tic-tac-toe.git
 
-// launch SpecRunner.html, right click 'Inspect' and play in the Console.
+// open tic-tac-toe.html in the browser
 
-$ var g = new Game(new Player('Mike'), new Player('Alan'))
-$ g.pickAfield(3)
 ...
 
 ```
