@@ -18,6 +18,18 @@ $ git clone git@github.com:nenoch/tic-tac-toe.git
 
 // open tic-tac-toe.html in the browser
 
-...
-
 ```
+
+### Screenshot
+
+**Step #1**
+
+![Enter players'name](./imgs/Screen-Shot-1.jpg)
+
+**Step #2**
+
+![Players start game](./imgs/Screen-Shot-2.jpg)
+
+**Step #3**
+
+![Winner is announced](./imgs/Screen-Shot-3.jpg)

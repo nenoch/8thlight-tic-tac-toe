@@ -57,6 +57,7 @@ Game.prototype.declareWinner = function () {
 
     if (this._currentBoard[a] && this._currentBoard[a] == this._currentBoard[b] && this._currentBoard[b] == this._currentBoard[c]) {
        return 'The Winner is ' + this._currentBoard[a];
+       break;
     }
   }
 
