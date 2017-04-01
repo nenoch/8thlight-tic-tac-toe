@@ -16,20 +16,15 @@ Game.prototype.pickAfield = function(num) {
   var mark = this._isXturn ? 'X' : 'O';
   if (this._currentBoard[num] === null) {
     this._currentBoard[num] = mark;
-    if (this._isGameOver()){
-      return this.gameOver
-    }
-    this.declareWinner();
-    this.gameOver();
     this.switchTurn();
   } else {
-    return 'You can\'t pick this field. Try with an empty one.';
+    alert('You can\'t pick this field. Try with an empty one.');
   }
 };
 
 Game.prototype.gameOver = function () {
   if (this._isGameOver()) {
-    return 'GAME OVER. Thanks for playing!';
+    alert('GAME OVER. Thanks for playing!');
   }
   return false;
 };
@@ -62,7 +57,7 @@ Game.prototype.declareWinner = function () {
     var c = winningCombos[i][2];
 
     if (this._currentBoard[a] && this._currentBoard[a] == this._currentBoard[b] && this._currentBoard[b] == this._currentBoard[c]) {
-      return 'The Winner is ' + this._currentPlayer.name;
+      alert('The Winner is ' + this._currentBoard[a]);
     }
   }
   return null;
