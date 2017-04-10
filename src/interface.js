@@ -6,7 +6,7 @@ $(document).ready(function() {
     var playerXname = $("input#playerX-name").val();
     var playerOname = $("input#playerO-name").val();
 
-    $("h2#messages").text("It's tic-tac-toe time " + playerXname + " and " + playerOname + "!");
+    $("#welcome-message").text("It's Tic-Tac-Toe time for " + playerXname + " and " + playerOname + "!");
     $("#form").hide();
 
     var playerX = new Player(playerXname);
@@ -26,7 +26,7 @@ $(document).ready(function() {
       if (div.innerHTML == game.gameOver() || game.declareWinner()) {
         $("#update").hide();
         $('.field').unbind('click');
-        var button = '<button type="button" onclick="location.reload()"" class="btn btn-default btn-lg">NEW GAME</button>';
+        var button = '<button type="button" onclick="location.reload()" class="btn btn-primary btn-lg">NEW GAME</button>';
         $(button).insertAfter('#end-of-game')
       }
     });
