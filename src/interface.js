@@ -14,84 +14,22 @@ $(document).ready(function() {
 
     var game = new Game(playerX, playerO);
 
-    $('#0').click(function(){
-      game.pickAfield(0);
-      $('#0').text(game._currentBoard[0]);
+    $('.field').click(function(){
+      var num = Number($(this).attr('id'));
+      var id = $(this).attr('id');
+      game.pickAfield(num);
+      $(this).text(game._currentBoard[num]);
       $("#end-of-game").text(game.declareWinner());
       $("#end-of-game").text(game.gameOver());
-      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
+      $("#update").text("It is " + game._currentPlayer.name + "'s turn");
       var div = document.getElementById("end-of-game")
       if (div.innerHTML == game.gameOver() || game.declareWinner()) {
-        $("h4#update").hide();
+        $("#update").hide();
         $('.field').unbind('click');
-        $('<button type="button" onclick="location.reload()"" class="btn btn-default btn-lg">NEW GAME</button>').insertAfter('#end-of-game')
+        var button = '<button type="button" onclick="location.reload()"" class="btn btn-default btn-lg">NEW GAME</button>';
+        $(button).insertAfter('#end-of-game')
       }
     });
-
-    $('#1').click(function(){
-      game.pickAfield(1);
-      $('#1').text(game._currentBoard[1]);
-      $("h2#end-of-game").text(game.declareWinner());
-      $("h2#end-of-game").text(game.gameOver());
-      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
-    });
-
-    $('#2').click(function(){
-      game.pickAfield(2);
-      $('#2').text(game._currentBoard[2]);
-      $("h2#end-of-game").text(game.declareWinner());
-      $("h2#end-of-game").text(game.gameOver());
-      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
-    });
-
-    $('#3').click(function(){
-      game.pickAfield(3);
-      $('#3').text(game._currentBoard[3]);
-      $("h2#end-of-game").text(game.declareWinner());
-      $("h2#end-of-game").text(game.gameOver());
-      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
-    });
-
-    $('#4').click(function(){
-      game.pickAfield(4);
-      $('#4').text(game._currentBoard[4]);
-      $("h2#end-of-game").text(game.declareWinner());
-      $("h2#end-of-game").text(game.gameOver());
-      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
-    });
-
-    $('#5').click(function(){
-      game.pickAfield(5);
-      $('#5').text(game._currentBoard[5]);
-      $("h2#end-of-game").text(game.declareWinner());
-      $("h2#end-of-game").text(game.gameOver());
-      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
-    });
-
-    $('#6').click(function(){
-      game.pickAfield(6);
-      $('#6').text(game._currentBoard[6]);
-      $("h2#end-of-game").text(game.declareWinner());
-      $("h2#end-of-game").text(game.gameOver());
-      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
-    });
-
-    $('#7').click(function(){
-      game.pickAfield(7);
-      $('#7').text(game._currentBoard[7]);
-      $("h2#end-of-game").text(game.declareWinner());
-      $("h2#end-of-game").text(game.gameOver());
-      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
-    });
-
-    $('#8').click(function(){
-      game.pickAfield(8);
-      $('#8').text(game._currentBoard[8]);
-      $("h2#end-of-game").text(game.declareWinner());
-      $("h2#end-of-game").text(game.gameOver());
-      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
-    });
-
 
 
   });
