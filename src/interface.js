@@ -6,7 +6,7 @@ $(document).ready(function() {
     var playerXname = $("input#playerX-name").val();
     var playerOname = $("input#playerO-name").val();
 
-    $("h3#messages").text("It's tic-tac-toe time " + playerXname + " and " + playerOname + "!");
+    $("h2#messages").text("It's tic-tac-toe time " + playerXname + " and " + playerOname + "!");
     $("#form").hide();
 
     var playerX = new Player(playerXname);
@@ -17,11 +17,23 @@ $(document).ready(function() {
     $('#0').click(function(){
       game.pickAfield(0);
       $('#0').text(game._currentBoard[0]);
-      $("h2#end-of-game").text(game.declareWinner());
-      $("h2#end-of-game").text(game.gameOver());
+      $("#end-of-game").text(game.declareWinner());
+      $("#end-of-game").text(game.gameOver());
       $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
-
+      var div = document.getElementById("end-of-game")
+      if (div.innerHTML == game.gameOver() || game.declareWinner()) {
+        $('.field').unbind("click");
+      }
     });
+
+    // $('#end-of-game').bind('contentchanged', function() {
+    //   alert('woo');
+    // });
+
+    var div = document.getElementById("end-of-game")
+    if (div.innerHTML == game.gameOver() || game.declareWinner()) {
+      alert("wow!");
+    }
 
     $('#1').click(function(){
       game.pickAfield(1);
