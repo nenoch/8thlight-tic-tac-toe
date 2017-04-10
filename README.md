@@ -1,5 +1,7 @@
 # Tic Tac Toe!
 
+A simple tic-tac-toe game for 2 players.
+
 ### Specifications
 
 - There are two players in the game (X and O)
@@ -11,6 +13,23 @@
 - A game is over when all fields are taken
 - Players can enter their names
 
+### Technology
+
+- jQuery
+- Javascript
+- HTML5/CSS
+- Bootstrap
+- Testing Framework : **Jasmine**
+
+
+To run the test suite:
+```
+$ git clone git@github.com:nenoch/tic-tac-toe.git
+
+// open SpecRunner.html in the browser
+
+```
+
 ### How to play Tic-Tac-Toe locally
 
 ```
@@ -20,16 +39,15 @@ $ git clone git@github.com:nenoch/tic-tac-toe.git
 
 ```
 
-### Screenshot
+### Interface
 
-**Step #1**
+**Step #1**<div style="text-align:center">![Landing Page](./imgs/1.png)</div>
 
-![Enter players'name](./imgs/Screen-Shot-1.jpg)
 
-**Step #2**
+**Step #2**<div style="text-align:center">![Enter players' names](./imgs/2.png)</div>
 
-![Players start game](./imgs/Screen-Shot-2.jpg)
+**Step #3**<div style="text-align:center">![Start the game](./imgs/3.png)</div>
 
-**Step #3**
+**Step #4**<div style="text-align:center">![Play](./imgs/4.png)</div>
 
-![Winner is announced](./imgs/Screen-Shot-3.jpg)
+**Step #5**<div style="text-align:center">![The Winner is announced](./imgs/5.png)</div>
