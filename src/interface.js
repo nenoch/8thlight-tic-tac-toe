@@ -22,18 +22,11 @@ $(document).ready(function() {
       $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
       var div = document.getElementById("end-of-game")
       if (div.innerHTML == game.gameOver() || game.declareWinner()) {
-        $('.field').unbind("click");
+        $("h4#update").hide();
+        $('.field').unbind('click');
+        $('<button type="button" onclick="location.reload()"" class="btn btn-default btn-lg">NEW GAME</button>').insertAfter('#end-of-game')
       }
     });
-
-    // $('#end-of-game').bind('contentchanged', function() {
-    //   alert('woo');
-    // });
-
-    var div = document.getElementById("end-of-game")
-    if (div.innerHTML == game.gameOver() || game.declareWinner()) {
-      alert("wow!");
-    }
 
     $('#1').click(function(){
       game.pickAfield(1);
