@@ -48,8 +48,12 @@ describe("Game", function() {
   describe("#declareWinner", function() {
 
     it("declare who's the winner", function(){
-      game._currentBoard = [null,null,null,'X','X','X',null,null,null];
-      expect(game.declareWinner()).toEqual('The Winner is X');
+      game.pickAfield(0)
+      game.pickAfield(4)
+      game.pickAfield(1)
+      game.pickAfield(8)
+      game.pickAfield(2)
+      expect(game.declareWinner()).toEqual('The Winner is Mike');
     });
 
   });

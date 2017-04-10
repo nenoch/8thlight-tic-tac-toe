@@ -9,7 +9,7 @@
 - A player wins if they claim all the fields in a row, column or diagonal
 - A game is over if a player wins
 - A game is over when all fields are taken
-- Players can enter a name
+- Players can enter their names
 
 ### How to play Tic-Tac-Toe locally
 
