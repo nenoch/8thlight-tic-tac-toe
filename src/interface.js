@@ -19,6 +19,8 @@ $(document).ready(function() {
       $('#0').text(game._currentBoard[0]);
       $("h2#end-of-game").text(game.declareWinner());
       $("h2#end-of-game").text(game.gameOver());
+      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
+
     });
 
     $('#1').click(function(){
@@ -26,6 +28,7 @@ $(document).ready(function() {
       $('#1').text(game._currentBoard[1]);
       $("h2#end-of-game").text(game.declareWinner());
       $("h2#end-of-game").text(game.gameOver());
+      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
     });
 
     $('#2').click(function(){
@@ -33,6 +36,7 @@ $(document).ready(function() {
       $('#2').text(game._currentBoard[2]);
       $("h2#end-of-game").text(game.declareWinner());
       $("h2#end-of-game").text(game.gameOver());
+      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
     });
 
     $('#3').click(function(){
@@ -40,6 +44,7 @@ $(document).ready(function() {
       $('#3').text(game._currentBoard[3]);
       $("h2#end-of-game").text(game.declareWinner());
       $("h2#end-of-game").text(game.gameOver());
+      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
     });
 
     $('#4').click(function(){
@@ -47,6 +52,7 @@ $(document).ready(function() {
       $('#4').text(game._currentBoard[4]);
       $("h2#end-of-game").text(game.declareWinner());
       $("h2#end-of-game").text(game.gameOver());
+      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
     });
 
     $('#5').click(function(){
@@ -54,6 +60,7 @@ $(document).ready(function() {
       $('#5').text(game._currentBoard[5]);
       $("h2#end-of-game").text(game.declareWinner());
       $("h2#end-of-game").text(game.gameOver());
+      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
     });
 
     $('#6').click(function(){
@@ -61,6 +68,7 @@ $(document).ready(function() {
       $('#6').text(game._currentBoard[6]);
       $("h2#end-of-game").text(game.declareWinner());
       $("h2#end-of-game").text(game.gameOver());
+      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
     });
 
     $('#7').click(function(){
@@ -68,6 +76,7 @@ $(document).ready(function() {
       $('#7').text(game._currentBoard[7]);
       $("h2#end-of-game").text(game.declareWinner());
       $("h2#end-of-game").text(game.gameOver());
+      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
     });
 
     $('#8').click(function(){
@@ -75,9 +84,9 @@ $(document).ready(function() {
       $('#8').text(game._currentBoard[8]);
       $("h2#end-of-game").text(game.declareWinner());
       $("h2#end-of-game").text(game.gameOver());
+      $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
     });
 
-    // $("h4#update").text("It is " + game._currentPlayer.name + "'s turn");
 
 
   });

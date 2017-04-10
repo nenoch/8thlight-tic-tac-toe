@@ -56,8 +56,8 @@ Game.prototype.declareWinner = function () {
     var c = winningCombos[i][2];
 
     if (this._currentBoard[a] && this._currentBoard[a] == this._currentBoard[b] && this._currentBoard[b] == this._currentBoard[c]) {
-       return 'The Winner is ' + this._currentBoard[a];
-       break;
+      this.switchTurn()
+      return 'The Winner is ' + this._currentPlayer.name;
     }
   }
 
