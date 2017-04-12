@@ -1,8 +1,13 @@
-# Tic Tac Toe!
+# 8th Light Tech Test | Tic-Tac-Toe
 
-A simple tic-tac-toe game for 2 players.
+_Hello,
+I’m the project manager at a Command Line Games, Inc. I have a small dev team and we hired a consulting company to help us build an app that will feature a number of games for children, one being Tic Tac Toe...._
+
+Follow the brief and improve the game.
 
 ### Specifications
+
+#### Starting point
 
 - There are two players in the game (X and O)
 - A turn ends when a player claims a field
@@ -12,6 +17,17 @@ A simple tic-tac-toe game for 2 players.
 - A game is over if a player wins
 - A game is over when all fields are taken
 - Players can enter their names
+
+#### Client's requests
+
+- The game must handle bad user input
+- The game must provide better feedforward and feedback messages to the user
+- A player can choose the symbol (not limited to X and O)
+- Players can decide who moves first
+- The user can choose game type:
+  - human vs human
+  - human vs computer
+  - computer vs computer
 
 ### Technology
 
@@ -38,16 +54,3 @@ $ git clone git@github.com:nenoch/tic-tac-toe.git
 // open tic-tac-toe.html in the browser
 
 ```
-
-### Interface
-
-**Step #1**<div style="text-align:center">![Landing Page](./imgs/1.png)</div>
-
-
-**Step #2**<div style="text-align:center">![Enter players' names](./imgs/2.png)</div>
-
-**Step #3**<div style="text-align:center">![Start the game](./imgs/3.png)</div>
-
-**Step #4**<div style="text-align:center">![Play](./imgs/4.png)</div>
-
-**Step #5**<div style="text-align:center">![The Winner is announced](./imgs/5.png)</div>
