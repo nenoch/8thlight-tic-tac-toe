@@ -28,6 +28,7 @@ Follow the brief and improve the game.
   - human vs human
   - human vs computer
   - computer vs computer
+- The computer is unbeatable
 
 ### Technology
 
