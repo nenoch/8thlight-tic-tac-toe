@@ -1,19 +1,19 @@
-function Game(playerX, playerO) {
-  this.players = [playerX, playerO];
+function Game(player1, player2) {
+  this.players = [player1, player2];
   this._currentBoard = [null,null,null,null,null,null,null,null,null];
-  this._isXturn = true;
+  this._isN1turn = true;
   this._currentPlayer = this.players[0];
   this.mark;
 }
 
 Game.prototype.switchTurn = function () {
-  this._isXturn = !this._isXturn;
+  this._isN1turn = !this._isN1turn;
   var index = this.players.indexOf(this._currentPlayer) == 0 ? 1 : 0;
   this._currentPlayer = this.players[index];
 };
 
 Game.prototype.pickAfield = function(num) {
-  var mark = this._isXturn ? 'X' : 'O';
+  var mark = this._isN1turn ? this.players[0].symbol : this.players[1].symbol;
   if (this._currentBoard[num] === null) {
     this._currentBoard[num] = mark;
     this.switchTurn();

@@ -22,9 +22,9 @@ Follow the brief and improve the game.
 
 - The game must handle bad user input
 - The game must provide better feedforward and feedback messages to the user
-- A player can choose the symbol (not limited to X and O)
+- A player can choose her symbol (not limited to X and O)
 - Players can decide who moves first
-- The user can choose game type:
+- The user can choose the game type:
   - human vs human
   - human vs computer
   - computer vs computer

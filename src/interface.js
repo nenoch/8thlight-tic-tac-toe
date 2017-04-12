@@ -2,16 +2,18 @@ $(document).ready(function() {
 
   $("#form").submit(function(event){
     event.preventDefault();
-    var playerXname = $("input#playerX-name").val();
-    var playerOname = $("input#playerO-name").val();
+    var player1name = $("input#player1-name").val();
+    var player2name = $("input#player2-name").val();
+    var player1symbol = $("input#player1-symbol").val();
+    var player2symbol = $("input#player2-symbol").val();
 
-    $("#welcome-message").text("It's Tic-Tac-Toe time for " + playerXname + " and " + playerOname + "!");
+    $("#welcome-message").text("It's Tic-Tac-Toe time for " + player1name + " and " + player2name + "!");
     $("#form").hide();
 
-    var playerX = new Player(playerXname);
-    var playerO = new Player(playerOname);
+    var player1 = new User(player1name, player1symbol);
+    var player2 = new User(player2name, player2symbol);
 
-    var game = new Game(playerX, playerO);
+    var game = new Game(player1, player2);
 
     $(".field").click(function(){
 

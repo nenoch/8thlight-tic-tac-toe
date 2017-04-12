@@ -18,7 +18,7 @@ describe("Game", function() {
 
     it("allows players to play one at the time", function(){
       game.switchTurn();
-      expect(game._isXturn).toEqual(false);
+      expect(game._isN1turn).toEqual(false);
     });
 
   });
