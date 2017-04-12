@@ -6,7 +6,15 @@ function Game(player1, player2) {
   this.mark;
 }
 
-Game.prototype.switchTurn = function () {
+Game.prototype.firstMover = function(player) {
+  if (this.players[0] !== player) {
+    var first = this.players.pop();
+    this.players.splice(0,0, first);
+  };
+  this._currentPlayer = this.players[0];
+};
+
+Game.prototype.switchTurn = function() {
   this._isN1turn = !this._isN1turn;
   var index = this.players.indexOf(this._currentPlayer) == 0 ? 1 : 0;
   this._currentPlayer = this.players[index];
@@ -22,13 +30,13 @@ Game.prototype.pickAfield = function(num) {
   }
 };
 
-Game.prototype.gameOver = function () {
+Game.prototype.gameOver = function() {
   if (this._isGameOver()) {
     return 'GAME OVER. Thanks for playing!';
   }
 };
 
-Game.prototype._isGameOver = function () {
+Game.prototype._isGameOver = function() {
   for(var i = 0; i < this._currentBoard.length; i++) {
     if (this._currentBoard[i] == null) {
       return false;
@@ -37,7 +45,7 @@ Game.prototype._isGameOver = function () {
   return true;
 };
 
-Game.prototype.declareWinner = function () {
+Game.prototype.declareWinner = function() {
   var winningCombos = [
     [0, 1, 2],
     [3, 4, 5],

@@ -14,6 +14,15 @@ describe("Game", function() {
     game = new Game(player1, player2);
   });
 
+  describe("#firstMover", function(){
+
+    it("allows the user to decide who moves first", function(){
+      game.firstMover(player2);
+      expect(game._currentPlayer).toEqual(player2);
+    });
+
+  });
+
   describe("#switchTurn", function(){
 
     it("allows players to play one at the time", function(){
