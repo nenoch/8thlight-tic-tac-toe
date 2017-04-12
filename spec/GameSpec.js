@@ -1,9 +1,17 @@
 describe("Game", function() {
 
   beforeEach(function() {
-    playerX = new Player('Mike');
-    playerO = new Player('Alan');
-    game = new Game(playerX, playerO);
+    player1 = {
+      name: "Mike",
+      symbol: "X"
+    };
+
+    player2 = {
+      name: "Alan",
+      symbol: "O"
+    };
+
+    game = new Game(player1, player2);
   });
 
   describe("#switchTurn", function(){
