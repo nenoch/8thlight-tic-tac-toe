@@ -8,7 +8,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   </head>
   <body>
 
@@ -35,8 +35,15 @@
         </div>
 
       </div>
-
       <form id="start-form" method="post">
+        <h3>Which type of game would you like to play?</h3>
+        <input type='radio' name='game-type' value='HvsH'>Human vs Human<br />
+        <input type='radio' name='game-type' value='1'>Human vs Computer<br />
+        <input type='radio' name='game-type' value='0'>Computer vs Computer<br />
+        <input type='submit' value='Next'>
+      </form>
+
+      <form id="players-form" method="post">
         <h3>Enter your names and favourite symbols to start playing!</h3>
           <input id='playerA-name' type='text' placeholder='Player A Name'>
           <input id='playerA-symbol' type='text' placeholder='Player A Symbol'>

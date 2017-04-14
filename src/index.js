@@ -1,10 +1,16 @@
 $(document).ready(function() {
   $("#board").hide();
-
+  $("#players-from").hide();
 
   $("#start-form").submit(function(event){
+    var gameType = $("input[name='game-type']:checked").val();
+    console.log(gameType);
+  });
+
+
+  $("#players-form").submit(function(event){
     event.preventDefault();
-    
+
     var playerAname = $("input#playerA-name").val();
     var playerAsymbol = $("input#playerA-symbol").val();
 
@@ -12,13 +18,13 @@ $(document).ready(function() {
     var playerBsymbol = $("input#playerB-symbol").val();
 
     $("#welcome-message").text("It's Tic-Tac-Toe time for " + playerAname + " and " + playerBname + "!");
-    $("#start-form").hide();
+    $("#players-form").hide();
 
     var player1 = new User(playerAname, playerAsymbol);
     var player2 = new User(playerBname, playerBsymbol);
     var game = new Game(player1, player2);
 
-    $("#first-move-form").html("<label>Would you like to choose who moves first?</label><br /><input type='radio' id='playerA' name='first-mover' value='0'> "+playerAname+"<br /><input type='radio' id='playerB' name='first-mover' value='1'> "+playerBname+"<br /><input type='radio' name='first-mover' value='0'> I don't care<br /><input type='submit' value='Play!'>");
+    $("#first-move-form").html("<label>Would you like to choose who moves first?</label><br /><input type='radio' name='first-mover' value='0'> "+playerAname+"<br /><input type='radio' name='first-mover' value='1'> "+playerBname+"<br /><input type='radio' name='first-mover' value='0'> I don't care<br /><input type='submit' value='Play!'>");
     $("#first-move-form").submit(function(event){
       event.preventDefault();
       var firstPlayerIndex = $("input[name='first-mover']:checked").val();
