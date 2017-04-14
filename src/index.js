@@ -4,9 +4,11 @@ $(document).ready(function() {
 
   $("#start-form").submit(function(event){
     event.preventDefault();
+    
     var playerAname = $("input#playerA-name").val();
-    var playerBname = $("input#playerB-name").val();
     var playerAsymbol = $("input#playerA-symbol").val();
+
+    var playerBname = $("input#playerB-name").val();
     var playerBsymbol = $("input#playerB-symbol").val();
 
     $("#welcome-message").text("It's Tic-Tac-Toe time for " + playerAname + " and " + playerBname + "!");

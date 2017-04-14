@@ -41,7 +41,7 @@ Follow the brief and improve the game.
 
 To run the test suite:
 ```
-$ git clone git@github.com:nenoch/tic-tac-toe.git
+$ git clone git@github.com:nenoch/8thlight-tic-tac-toe.git
 
 // open SpecRunner.html in the browser
 
@@ -50,8 +50,8 @@ $ git clone git@github.com:nenoch/tic-tac-toe.git
 ### How to play Tic-Tac-Toe locally
 
 ```
-$ git clone git@github.com:nenoch/tic-tac-toe.git
+$ git clone git@github.com:nenoch/8thlight-tic-tac-toe.git
 
-// open tic-tac-toe.html in the browser
+// open index.html in the browser
 
 ```
