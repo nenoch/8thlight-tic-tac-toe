@@ -67,15 +67,15 @@ $(document).ready(function() {
         $("#update").text(game._currentPlayer.name + "'s Turn!");
 
         $("#end-of-game").text(game.gameOver());
-        var div = document.getElementById("end-of-game")
+        var div = document.getElementById("end-of-game");
 
-        if (div.innerHTML === game.gameOver()) {
+        if (div.innerHTML != "") {
           $("#update").hide();
           $('.field').unbind('click');
           var button = '<button type="button" onclick="location.reload()" class="btn btn-primary btn-lg">Start a New Game</button>';
-          $(button).insertAfter('#end-of-game')
+          $(button).insertAfter('#end-of-game');
         }
-        
+
       });
 
     });

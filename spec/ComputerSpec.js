@@ -17,4 +17,15 @@ describe("Computer", function(){
 
   });
 
+  describe('#possibleMoves()', function(){
+
+    it('returns an array of possible moves', function(){
+      var game = {
+        _currentBoard: ['X',1,'X',3,4,'O',6,7,8]
+      };
+      expect(computer.possibleMoves(game)).toEqual([1,3,4,6,7,8]);
+    });
+
+  });
+
 });

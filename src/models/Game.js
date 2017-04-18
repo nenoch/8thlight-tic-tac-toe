@@ -1,6 +1,6 @@
 function Game(player1, player2) {
   this.players = [player1, player2];
-  this._currentBoard = [null,null,null,null,null,null,null,null,null];
+  this._currentBoard = [0,1,2,3,4,5,6,7,8];
   this._currentPlayer = this.players[0];
   this.mark;
 }
@@ -20,7 +20,7 @@ Game.prototype.switchTurn = function() {
 
 Game.prototype.pickAfield = function(num) {
   var mark = this._currentPlayer.symbol;
-  if (this._currentBoard[num] === null) {
+  if (this._currentBoard[num] === num) {
     this._currentBoard[num] = mark;
     this.switchTurn();
   } else {
@@ -29,18 +29,18 @@ Game.prototype.pickAfield = function(num) {
 };
 
 Game.prototype.gameOver = function() {
-  if (this._isGameOver()) {
-    return 'GAME OVER. Thanks for playing!';
-  }
-  else if (this._hasWinner()) {
+  if (this._hasWinner()) {
     this.switchTurn();
     return 'The Winner is ' + this._currentPlayer.name;
+  }
+  else if (this._isGameOver()) {
+    return 'GAME OVER. Thanks for playing!';
   }
 };
 
 Game.prototype._isGameOver = function() {
   for(var i = 0; i < this._currentBoard.length; i++) {
-    if (this._currentBoard[i] == null) {
+    if (this._currentBoard[i] == i) {
       return false;
     }
   }

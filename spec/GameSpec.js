@@ -51,12 +51,12 @@ describe("Game", function() {
   describe("#gameOver", function() {
 
     it("declare that a game is over when all fields are taken", function(){
-      game._currentBoard = ['X','O','X','O','X','O','X','O','X'];
+      game._currentBoard = ['X','X','O','O','O','X','X','O','X'];
       expect(game.gameOver()).toEqual('GAME OVER. Thanks for playing!');
     });
 
     it("doesn't declare that a game is over when fields are still available", function(){
-      game._currentBoard = ['X','X',null,'O','X','O','X','O','X'];
+      game._currentBoard = ['X',1,2,'O',4, 5,'X','O','X'];
       expect(game.gameOver()).not.toBeTruthy();
     });
 
@@ -66,7 +66,6 @@ describe("Game", function() {
       game.pickAfield(1)
       game.pickAfield(8)
       game.pickAfield(2)
-      console.log(game._currentBoard);
       expect(game.gameOver()).toEqual('The Winner is Mike');
     });
 
