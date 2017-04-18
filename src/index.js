@@ -1,30 +1,55 @@
 $(document).ready(function() {
   $("#board").hide();
-  $("#players-from").hide();
+
 
   $("#start-form").submit(function(event){
+    event.preventDefault();
     var gameType = $("input[name='game-type']:checked").val();
-    console.log(gameType);
-  });
 
+    $("#start-form").hide();
+
+    if (gameType == 1) {
+
+      $("#players-form").html("<h3>Enter your names and favourite symbols to start playing!</h3><input id='playerA-name' type='text' placeholder='Player A Name'><br /><input id='playerA-symbol' type='text' placeholder='Player A Symbol'><br /><input id='playerB-name' type='text' placeholder='Player B Name'><br /><input id='playerB-symbol' type='text' placeholder='Player B Symbol'><br /><input class='submit-button' type='submit' value='Start!'>");
+
+    } else if (gameType == 2) {
+
+      $("#players-form").html("<h3>Enter your name and favourite symbol to start playing!</h3><input id='playerA-name' type='text' placeholder='Player Name'><br /><input id='playerA-symbol' type='text' placeholder='Player Symbol'><br /><input type='submit' value='Start!'>");
+
+    } else {
+
+      $("#players-form").html("<h3>Time to watch two Hyper-Intelligent machines competing!</h3><br /><input type='submit' value='Start!'>");
+
+    }
 
   $("#players-form").submit(function(event){
-    event.preventDefault();
+      event.preventDefault();
+      var playerAname = $("input#playerA-name").val();
+      var playerAsymbol = $("input#playerA-symbol").val();
 
-    var playerAname = $("input#playerA-name").val();
-    var playerAsymbol = $("input#playerA-symbol").val();
+      if (playerAname === undefined) {
+        var player1 = new Computer();
+      } else {
+        var player1 = new User(playerAname, playerAsymbol);
+      }
 
-    var playerBname = $("input#playerB-name").val();
-    var playerBsymbol = $("input#playerB-symbol").val();
+      var playerBname = $("input#playerB-name").val();
+      var playerBsymbol = $("input#playerB-symbol").val();
 
-    $("#welcome-message").text("It's Tic-Tac-Toe time for " + playerAname + " and " + playerBname + "!");
+      if (playerBname === undefined) {
+        var player2 = new Computer();
+      } else {
+        var player2 = new User(playerBname, playerBsymbol);
+      }
+
+      var game = new Game(player1, player2);
+      console.log(game);
+
     $("#players-form").hide();
 
-    var player1 = new User(playerAname, playerAsymbol);
-    var player2 = new User(playerBname, playerBsymbol);
-    var game = new Game(player1, player2);
+    $("#welcome-message").text("It's Tic-Tac-Toe time for " + player1.name + " and " + player2.name + "!");
 
-    $("#first-move-form").html("<label>Would you like to choose who moves first?</label><br /><input type='radio' name='first-mover' value='0'> "+playerAname+"<br /><input type='radio' name='first-mover' value='1'> "+playerBname+"<br /><input type='radio' name='first-mover' value='0'> I don't care<br /><input type='submit' value='Play!'>");
+    $("#first-move-form").html("<label>Would you like to choose who moves first?</label><br /><input type='radio' name='first-mover' value='0'> "+player1.name+"<br /><input type='radio' name='first-mover' value='1'> "+player2.name+"<br /><input type='radio' name='first-mover' value='0'> I don't care<br /><input type='submit' value='Play!'>");
     $("#first-move-form").submit(function(event){
       event.preventDefault();
       var firstPlayerIndex = $("input[name='first-mover']:checked").val();
@@ -52,9 +77,10 @@ $(document).ready(function() {
           $(button).insertAfter('#end-of-game')
         }
       });
+
     });
 
   });
 
-
+  });
 });

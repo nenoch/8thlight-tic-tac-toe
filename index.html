@@ -37,21 +37,13 @@
       </div>
       <form id="start-form" method="post">
         <h3>Which type of game would you like to play?</h3>
-        <input type='radio' name='game-type' value='HvsH'>Human vs Human<br />
-        <input type='radio' name='game-type' value='1'>Human vs Computer<br />
-        <input type='radio' name='game-type' value='0'>Computer vs Computer<br />
+        <input type='radio' name='game-type' value='1'>Human vs Human<br />
+        <input type='radio' name='game-type' value='2'>Human vs Computer<br />
+        <input type='radio' name='game-type' value='3'>Computer vs Computer<br />
         <input type='submit' value='Next'>
       </form>
 
       <form id="players-form" method="post">
-        <h3>Enter your names and favourite symbols to start playing!</h3>
-          <input id='playerA-name' type='text' placeholder='Player A Name'>
-          <input id='playerA-symbol' type='text' placeholder='Player A Symbol'>
-          <br />
-          <input id='playerB-name' type='text' placeholder='Player B Name'>
-          <input id='playerB-symbol' type='text' placeholder='Player B Symbol'>
-          <br />
-        <input class='submit-button' type='submit' value='Start!'>
       </form>
 
       <form id="first-move-form" method="post" >
@@ -61,6 +53,7 @@
       <h2 id="end-of-game"></h2>
 
     </div>
+    <script src="src/models/Computer.js"></script>
     <script src="src/models/User.js"></script>
     <script src="src/models/Game.js"></script>
     <script src="src/jquery-3.1.1.min.js"></script>
