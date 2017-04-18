@@ -26,8 +26,8 @@ describe("Game", function() {
   describe("#switchTurn", function(){
 
     it("allows players to play one at the time", function(){
-      game.switchTurn();
-      expect(game._isN1turn).toEqual(false);
+      game.switchTurn()
+      expect(game._currentPlayer.name).toEqual('Alan');
     });
 
   });
@@ -60,17 +60,14 @@ describe("Game", function() {
       expect(game.gameOver()).not.toBeTruthy();
     });
 
-  });
-
-  describe("#declareWinner", function() {
-
-    it("declare who's the winner", function(){
+    it("when one of the players wins, declares the name of the winner", function(){
       game.pickAfield(0)
       game.pickAfield(4)
       game.pickAfield(1)
       game.pickAfield(8)
       game.pickAfield(2)
-      expect(game.declareWinner()).toEqual('The Winner is Mike');
+      console.log(game._currentBoard);
+      expect(game.gameOver()).toEqual('The Winner is Mike');
     });
 
   });

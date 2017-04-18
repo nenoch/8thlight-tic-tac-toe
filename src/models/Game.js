@@ -1,7 +1,6 @@
 function Game(player1, player2) {
   this.players = [player1, player2];
   this._currentBoard = [null,null,null,null,null,null,null,null,null];
-  this._isN1turn = true;
   this._currentPlayer = this.players[0];
   this.mark;
 }
@@ -15,13 +14,12 @@ Game.prototype.firstMover = function(player) {
 };
 
 Game.prototype.switchTurn = function() {
-  this._isN1turn = !this._isN1turn;
   var index = this.players.indexOf(this._currentPlayer) == 0 ? 1 : 0;
   this._currentPlayer = this.players[index];
 };
 
 Game.prototype.pickAfield = function(num) {
-  var mark = this._isN1turn ? this.players[0].symbol : this.players[1].symbol;
+  var mark = this._currentPlayer.symbol;
   if (this._currentBoard[num] === null) {
     this._currentBoard[num] = mark;
     this.switchTurn();
@@ -34,6 +32,10 @@ Game.prototype.gameOver = function() {
   if (this._isGameOver()) {
     return 'GAME OVER. Thanks for playing!';
   }
+  else if (this._hasWinner()) {
+    this.switchTurn();
+    return 'The Winner is ' + this._currentPlayer.name;
+  }
 };
 
 Game.prototype._isGameOver = function() {
@@ -45,7 +47,7 @@ Game.prototype._isGameOver = function() {
   return true;
 };
 
-Game.prototype.declareWinner = function() {
+Game.prototype._hasWinner = function() {
   var winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -64,8 +66,7 @@ Game.prototype.declareWinner = function() {
     var c = winningCombos[i][2];
 
     if (this._currentBoard[a] && this._currentBoard[a] == this._currentBoard[b] && this._currentBoard[b] == this._currentBoard[c]) {
-      this.switchTurn()
-      return 'The Winner is ' + this._currentPlayer.name;
+      return true;
     }
   }
 

@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     } else {
 
-      $("#players-form").html("<h3>Time to watch two Hyper-Intelligent machines competing!</h3><br /><input type='submit' value='Start!'>");
+      $("#players-form").html("<h3>Watch two Hyper-Intelligent machines competing!</h3><br /><input type='submit' value='Start!'>");
 
     }
 
@@ -43,7 +43,6 @@ $(document).ready(function() {
       }
 
       var game = new Game(player1, player2);
-      console.log(game);
 
     $("#players-form").hide();
 
@@ -65,17 +64,18 @@ $(document).ready(function() {
 
         game.pickAfield(num);
         $(this).text(game._currentBoard[num]);
-
-        $("#end-of-game").text(game.declareWinner());
-        $("#end-of-game").text(game.gameOver());
         $("#update").text(game._currentPlayer.name + "'s Turn!");
+
+        $("#end-of-game").text(game.gameOver());
         var div = document.getElementById("end-of-game")
-        if (div.innerHTML == game.gameOver() || game.declareWinner()) {
+
+        if (div.innerHTML === game.gameOver()) {
           $("#update").hide();
           $('.field').unbind('click');
           var button = '<button type="button" onclick="location.reload()" class="btn btn-primary btn-lg">Start a New Game</button>';
           $(button).insertAfter('#end-of-game')
         }
+        
       });
 
     });
