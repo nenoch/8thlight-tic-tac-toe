@@ -10,3 +10,15 @@ Computer.prototype.possibleMoves = function(game) {
     return Number.isInteger(el)
   });
 };
+
+Computer.prototype.score = function(game) {
+  if (game.gameOver() && game.winner == undefined) {
+    return 0;
+  }
+  else if (game.gameOver() && game.winner.name == this.name){
+    return 1;
+  }
+  else if (game.gameOver() && game.winner.name != this.name){
+    return -1;
+  }
+};

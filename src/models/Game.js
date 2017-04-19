@@ -2,7 +2,7 @@ function Game(player1, player2) {
   this.players = [player1, player2];
   this._currentBoard = [0,1,2,3,4,5,6,7,8];
   this._currentPlayer = this.players[0];
-  this.mark;
+  this.winner;
 }
 
 Game.prototype.firstMover = function(player) {
@@ -30,8 +30,7 @@ Game.prototype.pickAfield = function(num) {
 
 Game.prototype.gameOver = function() {
   if (this._hasWinner()) {
-    this.switchTurn();
-    return 'The Winner is ' + this._currentPlayer.name;
+    return 'The Winner is ' + this.winner.name;
   }
   else if (this._isGameOver()) {
     return 'GAME OVER. Thanks for playing!';
@@ -66,6 +65,8 @@ Game.prototype._hasWinner = function() {
     var c = winningCombos[i][2];
 
     if (this._currentBoard[a] && this._currentBoard[a] == this._currentBoard[b] && this._currentBoard[b] == this._currentBoard[c]) {
+      var winnerSymbol = this._currentBoard[a];
+      this.winner = this.players[0].symbol == winnerSymbol ? this.players[0] : this.players[1];
       return true;
     }
   }

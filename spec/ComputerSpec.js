@@ -17,13 +17,41 @@ describe("Computer", function(){
 
   });
 
-  describe('#possibleMoves()', function(){
+  describe('#possibleMoves', function(){
 
     it('returns an array of possible moves', function(){
       var game = {
         _currentBoard: ['X',1,'X',3,4,'O',6,7,8]
       };
       expect(computer.possibleMoves(game)).toEqual([1,3,4,6,7,8]);
+    });
+
+  });
+
+  describe('#score', function(){
+
+    beforeEach(function(){
+      player2 = {
+        name: "Alan",
+        symbol: "O"
+      };
+      game = new Game(computer,player2)
+    });
+
+
+    it('assign a score of 1 to a game where Computer wins', function(){
+      game._currentBoard = ['♜','♜','♜',3,4,'O','O',7,8];
+      expect(computer.score(game)).toEqual(1);
+    });
+
+    it('assign a score of -1 to a game where opponent wins', function(){
+      game._currentBoard = ['♜',1,'♜','♜',4,5,'O','O','O'];
+      expect(computer.score(game)).toEqual(-1);
+    });
+
+    it('assign a score of 0 to a game ended in a draw', function(){
+      game._currentBoard = ['♜','♜','O','O','O','♜','♜','O','♜'];
+      expect(computer.score(game)).toEqual(0);
     });
 
   });

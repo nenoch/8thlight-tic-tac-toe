@@ -18,7 +18,7 @@ Follow the brief and improve the game.
 - A game is over when all fields are taken
 - Players can enter their names
 
-#### Client's requests
+#### Client's specifications
 
 - The game must handle bad user input
 - The game must provide better feedforward and feedback messages to the user
@@ -55,3 +55,8 @@ $ git clone git@github.com:nenoch/minimax-tic-tac-toe.git
 // open index.html in the browser
 
 ```
+#### Main Minimax Resources
+
+[VIDEO | Harvard’s CS50 explanaition of the concept of Recursion](https://www.youtube.com/watch?v=VrrnjYgDBEk)   
+[GeeksForGeeks | Minimax Algorithm in Game Theory](http://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-3-tic-tac-toe-ai-finding-optimal-move/)   
+[RECURSION 201: MINIMAX, TIC TAC TOE, & AN UNBEATABLE AI](http://www.shei.io/recursion-minimax-algorithm/)
