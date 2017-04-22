@@ -20,7 +20,7 @@ Game.prototype.switchTurn = function() {
 
 Game.prototype.pickAfield = function(num) {
   var mark = this._currentPlayer.symbol;
-  if (this._currentBoard[num] === num) {
+  if (this._currentBoard[num] == num) {
     this._currentBoard[num] = mark;
     this.switchTurn();
   } else {
@@ -28,25 +28,28 @@ Game.prototype.pickAfield = function(num) {
   }
 };
 
-Game.prototype.gameOver = function() {
-  if (this._hasWinner()) {
+Game.prototype.gameOverMessage = function() {
+  if (this.hasWinner()) {
     return 'The Winner is ' + this.winner.name;
   }
-  else if (this._isGameOver()) {
-    return 'GAME OVER. Thanks for playing!';
+  else if (this.isDraw()) {
+    return 'GAME OVER. No one wins this time!';
   }
 };
 
-Game.prototype._isGameOver = function() {
-  for(var i = 0; i < this._currentBoard.length; i++) {
-    if (this._currentBoard[i] == i) {
-      return false;
+Game.prototype.isDraw = function() {
+  if (!this.hasWinner()) {
+    for(var i = 0; i < this._currentBoard.length; i++) {
+      if (this._currentBoard[i] == i) {
+        return false;
+      }
     }
+    return true;
   }
-  return true;
+  return false;
 };
 
-Game.prototype._hasWinner = function() {
+Game.prototype.hasWinner = function() {
   var winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -68,6 +71,9 @@ Game.prototype._hasWinner = function() {
       var winnerSymbol = this._currentBoard[a];
       this.winner = this.players[0].symbol == winnerSymbol ? this.players[0] : this.players[1];
       return true;
+    }
+    else {
+      return false;
     }
   }
 

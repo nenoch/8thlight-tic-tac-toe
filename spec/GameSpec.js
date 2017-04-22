@@ -48,28 +48,62 @@ describe("Game", function() {
 
   });
 
-  describe("#gameOver", function() {
+  describe("#gameOverMessage", function() {
 
-    it("declare that a game is over when all fields are taken", function(){
+    it("declares that a game is over when game is a draw", function(){
       game._currentBoard = ['X','X','O','O','O','X','X','O','X'];
-      expect(game.gameOver()).toEqual('GAME OVER. Thanks for playing!');
+      expect(game.gameOverMessage()).toEqual('GAME OVER. No one wins this time!');
     });
 
-    it("doesn't declare that a game is over when fields are still available", function(){
-      game._currentBoard = ['X',1,2,'O',4, 5,'X','O','X'];
-      expect(game.gameOver()).not.toBeTruthy();
-    });
-
-    it("when one of the players wins, declares the name of the winner", function(){
-      game.pickAfield(0)
-      game.pickAfield(4)
-      game.pickAfield(1)
-      game.pickAfield(8)
-      game.pickAfield(2)
-      expect(game.gameOver()).toEqual('The Winner is Mike');
+    it("declares the name of the winner when one of the players wins", function(){
+      game._currentBoard = ['X','X','X',3,'O',5,6,7,'O'];
+      expect(game.gameOverMessage()).toEqual('The Winner is Mike');
     });
 
   });
 
+  describe("#isDraw", function(){
+
+    it("is true when there are no available fields", function(){
+      game._currentBoard = ['X','X','O','O','O','X','X','O','X'];
+      expect(game.isDraw()).toEqual(true);
+    });
+
+    it("is false when fields are still available", function(){
+      game._currentBoard = ['X',1,2,'O',4, 5,'X','O','X'];
+      expect(game.isDraw()).toEqual(false);
+    });
+
+    it("is false when there is a winner", function(){
+      game._currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      expect(game.isDraw()).toEqual(false);
+    });
+
+  });
+
+  describe("#hasWinner", function(){
+
+    it("is false when there is no winner", function(){
+      game._currentBoard = ['X','X','O','O','O','X','X','O','X'];
+      expect(game.hasWinner()).toEqual(false);
+    });
+
+    it("is true when there is a winner", function(){
+      game._currentBoard = ['X','X','X',3,'O',5,6,7,'O'];
+      expect(game.hasWinner()).toEqual(true);
+    });
+
+    it("is true when there is a winner and all fields are taken", function(){
+      game._currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      expect(game.hasWinner()).toEqual(true);
+    });
+
+    it("assigns a player to winner when true", function(){
+      game._currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      game.hasWinner();
+      expect(game.winner).toEqual(player1);
+    });
+
+  });
 
 });

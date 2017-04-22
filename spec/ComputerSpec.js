@@ -45,7 +45,7 @@ describe("Computer", function(){
     });
 
     it('assign a score of -1 to a game where opponent wins', function(){
-      game._currentBoard = ['♜',1,'♜','♜',4,5,'O','O','O'];
+      game._currentBoard = ['O','O','O',3,4,'♜','♜',7,'♜'];
       expect(computer.score(game)).toEqual(-1);
     });
 
@@ -92,11 +92,20 @@ describe("Computer", function(){
 
   });
 
-  describe('#bestScore', function(){
+  describe('#highestScore', function(){
 
     it('returns the highest score of the moves\' hashmap', function(){
       var moves = {2:1, 3:-1, 5:0};
-      expect(computer.bestScore(moves)).toEqual(1);
+      expect(computer.highestScore(moves)).toEqual(1);
+    });
+
+  });
+
+  describe('#lowestScore', function(){
+
+    it('returns the lowest score of the moves\' hashmap', function(){
+      var moves = {2:1, 3:-1, 5:0};
+      expect(computer.lowestScore(moves)).toEqual(-1);
     });
 
   });
