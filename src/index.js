@@ -59,15 +59,14 @@ $(document).ready(function() {
 
       $(".field").click(function(){
 
-        var num = Number($(this).attr('id'));
-        var id = $(this).attr('id');
+        game.pickAfield();
 
-        game.pickAfield(num);
-        $(this).text(game._currentBoard[num]);
+        // var num = Number($(this).attr('id'));
+        // var id = $(this).attr('id');
+
+        // $(this).text(game.currentBoard[num]);
         $("#update").text(game._currentPlayer.name + "'s Turn!");
-        console.log(game._currentBoard);
-        console.log(game.hasWinner());
-        console.log(game.isDraw());
+
         $("#end-of-game").text(game.gameOverMessage());
         var div = document.getElementById("end-of-game");
 

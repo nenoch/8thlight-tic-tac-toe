@@ -3,6 +3,16 @@ describe("Computer", function(){
   beforeEach(function(){
     spyOn(Math, 'random').and.returnValue(0.2);
     computer = new Computer();
+
+    player2 = {
+      name: "Alan",
+      symbol: "O",
+      makeAmove: function(){
+        return 2
+      }
+    };
+    
+    game = new Game(computer,player2)
   });
 
   describe('at initialization', function(){
@@ -20,9 +30,7 @@ describe("Computer", function(){
   describe('#possibleMoves', function(){
 
     it('returns an array of possible moves', function(){
-      var game = {
-        _currentBoard: ['X',1,'X',3,4,'O',6,7,8]
-      };
+      game.currentBoard = ['X',1,'X',3,4,'O',6,7,8];
       expect(computer.possibleMoves(game)).toEqual([1,3,4,6,7,8]);
     });
 
@@ -30,27 +38,18 @@ describe("Computer", function(){
 
   describe('#score', function(){
 
-    beforeEach(function(){
-      player2 = {
-        name: "Alan",
-        symbol: "O"
-      };
-      game = new Game(computer,player2)
-    });
-
-
     it('assign a score of 1 to a game where Computer wins', function(){
-      game._currentBoard = ['♜','♜','♜',3,4,'O','O',7,8];
+      game.currentBoard = ['♜','♜','♜',3,4,'O','O',7,8];
       expect(computer.score(game)).toEqual(1);
     });
 
     it('assign a score of -1 to a game where opponent wins', function(){
-      game._currentBoard = ['O','O','O',3,4,'♜','♜',7,'♜'];
+      game.currentBoard = ['O','O','O',3,4,'♜','♜',7,'♜'];
       expect(computer.score(game)).toEqual(-1);
     });
 
     it('assign a score of 0 to a game ended in a draw', function(){
-      game._currentBoard = ['♜','♜','O','O','O','♜','♜','O','♜'];
+      game.currentBoard = ['♜','♜','O','O','O','♜','♜','O','♜'];
       expect(computer.score(game)).toEqual(0);
     });
 
@@ -58,16 +57,8 @@ describe("Computer", function(){
 
   describe('#minimaxMove', function(){
 
-    beforeEach(function(){
-      player2 = {
-        name: "Alan",
-        symbol: "O"
-      };
-      game = new Game(computer,player2)
-    });
-
     it('calculates the move with the highest chances of victory', function(){
-      game._currentBoard = ['♜','♜',2,3,'♜','O','O','O',8];
+      game.currentBoard = ['♜','♜',2,3,'♜','O','O','O',8];
       expect(computer.minimaxMove(game)).toEqual(2);
     });
 
@@ -75,19 +66,11 @@ describe("Computer", function(){
 
   describe('#resetBoard', function(){
 
-    beforeEach(function(){
-      player2 = {
-        name: "Alan",
-        symbol: "O"
-      };
-      game = new Game(computer,player2)
-    });
-
     it('cancels a given move', function(){
-      game._currentBoard = ['♜','♜',2,3,4,'O','O',7,8];
+      game.currentBoard = ['♜','♜',2,3,4,'O','O',7,8];
       var move = 1;
       computer.resetBoard(game, move)
-      expect(game._currentBoard).toEqual(['♜',1,2,3,4,'O','O',7,8]);
+      expect(game.currentBoard).toEqual(['♜',1,2,3,4,'O','O',7,8]);
     });
 
   });

@@ -3,12 +3,18 @@ describe("Game", function() {
   beforeEach(function() {
     player1 = {
       name: "Mike",
-      symbol: "X"
+      symbol: "X",
+      pickAfield: function(){
+        return 2;
+      }
     };
 
     player2 = {
       name: "Alan",
-      symbol: "O"
+      symbol: "O",
+      pickAfield: function(){
+        return 2;
+      }
     };
 
     game = new Game(player1, player2);
@@ -32,17 +38,18 @@ describe("Game", function() {
 
   });
 
-  describe("#pickAfield", function() {
+  describe("#makeAmove", function() {
+
 
     it("allows the player to choose a field", function(){
-      game.pickAfield(2)
-      expect(game._currentBoard[2]).toEqual('X');
+      game.makeAmove(game._currentPlayer.pickAfield());
+      expect(game.currentBoard[2]).toEqual('X');
     });
 
     it("prevents a field to be selected twice during the game", function(){
       spyOn(window, 'alert');
-      game.pickAfield(2)
-      game.pickAfield(2)
+      game.makeAmove(game._currentPlayer.pickAfield());
+      game.makeAmove(game._currentPlayer.pickAfield());
       expect(window.alert).toHaveBeenCalledWith('You can\'t pick this field. Try with an empty one.');
     });
 
@@ -51,12 +58,12 @@ describe("Game", function() {
   describe("#gameOverMessage", function() {
 
     it("declares that a game is over when game is a draw", function(){
-      game._currentBoard = ['X','X','O','O','O','X','X','O','X'];
+      game.currentBoard = ['X','X','O','O','O','X','X','O','X'];
       expect(game.gameOverMessage()).toEqual('GAME OVER. No one wins this time!');
     });
 
     it("declares the name of the winner when one of the players wins", function(){
-      game._currentBoard = ['X','X','X',3,'O',5,6,7,'O'];
+      game.currentBoard = ['X','X','X',3,'O',5,6,7,'O'];
       expect(game.gameOverMessage()).toEqual('The Winner is Mike');
     });
 
@@ -65,17 +72,17 @@ describe("Game", function() {
   describe("#isDraw", function(){
 
     it("is true when there are no available fields", function(){
-      game._currentBoard = ['X','X','O','O','O','X','X','O','X'];
+      game.currentBoard = ['X','X','O','O','O','X','X','O','X'];
       expect(game.isDraw()).toEqual(true);
     });
 
     it("is false when fields are still available", function(){
-      game._currentBoard = ['X',1,2,'O',4, 5,'X','O','X'];
+      game.currentBoard = ['X',1,2,'O',4, 5,'X','O','X'];
       expect(game.isDraw()).toEqual(false);
     });
 
     it("is false when there is a winner", function(){
-      game._currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
       expect(game.isDraw()).toEqual(false);
     });
 
@@ -84,22 +91,22 @@ describe("Game", function() {
   describe("#hasWinner", function(){
 
     it("is false when there is no winner", function(){
-      game._currentBoard = ['X','X','O','O','O','X','X','O','X'];
+      game.currentBoard = ['X','X','O','O','O','X','X','O','X'];
       expect(game.hasWinner()).toEqual(false);
     });
 
     it("is true when there is a winner", function(){
-      game._currentBoard = ['X','X','X',3,'O',5,6,7,'O'];
+      game.currentBoard = ['X','X','X',3,'O',5,6,7,'O'];
       expect(game.hasWinner()).toEqual(true);
     });
 
     it("is true when there is a winner and all fields are taken", function(){
-      game._currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
       expect(game.hasWinner()).toEqual(true);
     });
 
     it("assigns a player to winner when true", function(){
-      game._currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
       game.hasWinner();
       expect(game.winner).toEqual(player1);
     });

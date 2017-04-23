@@ -6,22 +6,19 @@ function Computer() {
 }
 
 Computer.prototype.possibleMoves = function(game) {
-  return game._currentBoard.filter(function(el) {
+  return game.currentBoard.filter(function(el) {
     return Number.isInteger(el)
   });
 };
 
 Computer.prototype.score = function(game) {
   if (game.hasWinner() && game.winner != this) {
-    console.log(game.winner);
     return -1;
   }
   else if (game.hasWinner() && game.winner == this){
-    console.log(game.winner);
     return 1;
   }
   else if (game.isDraw()){
-    console.log("Draw doesn't have winner", game.hasWinner());
     return 0;
   }
 };
@@ -35,12 +32,10 @@ var possibleMoves = this.possibleMoves(game);
 
   for(var i = 0; i < possibleMoves.length; i++) {
     var move = possibleMoves[i];
-    game.pickAfield(move);
+    game.makeAmove(move);
     movesScore[move] = this.minimaxMove(game, depth += 1, {});
     this.resetBoard(game, move);
   }
-
-  console.log(movesScore);
 
   if (depth == possibleMoves.length) {
     return this.bestMove(movesScore);
@@ -52,6 +47,10 @@ var possibleMoves = this.possibleMoves(game);
   else {
     return this.lowestScore(movesScore);
   }
+
+};
+
+Computer.prototype.pickAfield = function() {
 
 };
 
@@ -77,6 +76,6 @@ Computer.prototype.bestMove = function(hashmap) {
 };
 
 Computer.prototype.resetBoard = function(game, move) {
-  game._currentBoard[move] = move;
+  game.currentBoard[move] = move;
   game.switchTurn();
 };
