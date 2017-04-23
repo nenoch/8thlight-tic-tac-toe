@@ -65,8 +65,10 @@ $(document).ready(function() {
         game.pickAfield(num);
         $(this).text(game._currentBoard[num]);
         $("#update").text(game._currentPlayer.name + "'s Turn!");
-
-        $("#end-of-game").text(game.gameOver());
+        console.log(game._currentBoard);
+        console.log(game.hasWinner());
+        console.log(game.isDraw());
+        $("#end-of-game").text(game.gameOverMessage());
         var div = document.getElementById("end-of-game");
 
         if (div.innerHTML != "") {

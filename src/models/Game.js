@@ -72,9 +72,6 @@ Game.prototype.hasWinner = function() {
       this.winner = this.players[0].symbol == winnerSymbol ? this.players[0] : this.players[1];
       return true;
     }
-    else {
-      return false;
-    }
   }
-
+  return false;
 };

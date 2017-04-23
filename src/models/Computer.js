@@ -40,6 +40,8 @@ var possibleMoves = this.possibleMoves(game);
     this.resetBoard(game, move);
   }
 
+  console.log(movesScore);
+
   if (depth == possibleMoves.length) {
     return this.bestMove(movesScore);
   }
