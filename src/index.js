@@ -77,14 +77,18 @@ $(document).ready(function() {
 
         if (game._currentPlayer instanceof Computer) {
           var num = game._currentPlayer.minimaxMove(game);
-          $("#" + num).trigger("click");
+          setTimeout(function() {
+            $("#" + num).trigger("click");
+          }, 1000);
         }
 
       });
 
       if (game._currentPlayer instanceof Computer) {
         var num = game._currentPlayer.minimaxMove(game);
-        $("#" + num).trigger("click");
+        setTimeout(function() {
+          $("#" + num).trigger("click");
+        }, 1000);
       }
 
     });
