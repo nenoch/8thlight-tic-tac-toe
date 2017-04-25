@@ -16,18 +16,13 @@ describe("User", function() {
 
   });
 
-  xdescribe('#makeAMove', function(){
+  xdescribe('#pickAfield', function(){
 
     it('selects from the interface the number of the field to be played by User', function(){
-      var spyEvent = spyOnEvent('#1', 'click')
-      $('#1').click()
-      expect('click').toHaveBeenTriggeredOn('#1')
-      expect(spyEvent).toHaveBeenTriggered()
-
       // var spyEvent = spyOnEvent('#1', 'click')
       // $('#1').click()
       // expect('click').toHaveBeenTriggeredOn('#1')
-      // expect(user.makeAMove()).toEqual(2);
+      // expect(spyEvent).toHaveBeenTriggered();
     });
 
   });

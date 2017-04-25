@@ -4,8 +4,5 @@ function User(name, symbol) {
 }
 
 User.prototype.pickAfield = function() {
-  // return Number($(this).attr('id'));
-  // $(this).text(game.currentBoard[num]);
-  return 3;
-
+      return this.id;
 };

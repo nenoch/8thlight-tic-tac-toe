@@ -59,12 +59,10 @@ $(document).ready(function() {
 
       $(".field").click(function(){
 
-        game.pickAfield();
+        var num = this.id;
+        game.makeAmove(num);
 
-        // var num = Number($(this).attr('id'));
-        // var id = $(this).attr('id');
-
-        // $(this).text(game.currentBoard[num]);
+        $(this).text(game.currentBoard[num]);
         $("#update").text(game._currentPlayer.name + "'s Turn!");
 
         $("#end-of-game").text(game.gameOverMessage());
@@ -77,8 +75,18 @@ $(document).ready(function() {
           $(button).insertAfter('#end-of-game');
         }
 
+        if (game._currentPlayer instanceof Computer) {
+          var num = game._currentPlayer.pickAfield(game);
+          $("#" + num).trigger("click");
+        }
+
       });
 
+      if (game._currentPlayer instanceof Computer) {
+        var num = game._currentPlayer.pickAfield(game);
+        $("#" + num).trigger("click");
+      }
+      
     });
 
   });

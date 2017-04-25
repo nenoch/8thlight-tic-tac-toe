@@ -50,8 +50,8 @@ var possibleMoves = this.possibleMoves(game);
 
 };
 
-Computer.prototype.pickAfield = function() {
-
+Computer.prototype.pickAfield = function(game) {
+  return this.minimaxMove(game);
 };
 
 Computer.prototype.highestScore = function(hashmap) {
