@@ -76,17 +76,17 @@ $(document).ready(function() {
         }
 
         if (game._currentPlayer instanceof Computer) {
-          var num = game._currentPlayer.pickAfield(game);
+          var num = game._currentPlayer.minimaxMove(game);
           $("#" + num).trigger("click");
         }
 
       });
 
       if (game._currentPlayer instanceof Computer) {
-        var num = game._currentPlayer.pickAfield(game);
+        var num = game._currentPlayer.minimaxMove(game);
         $("#" + num).trigger("click");
       }
-      
+
     });
 
   });

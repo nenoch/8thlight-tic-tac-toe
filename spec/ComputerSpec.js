@@ -6,19 +6,16 @@ describe("Computer", function(){
 
     player2 = {
       name: "Alan",
-      symbol: "O",
-      makeAmove: function(){
-        return 2
-      }
+      symbol: "O"
     };
-    
+
     game = new Game(computer,player2)
   });
 
   describe('at initialization', function(){
 
     it('gets a random name', function(){
-      expect(computer.name).toEqual('Dr.Know');
+      expect(computer.name).toEqual('Dr. Know');
     });
 
     it('gets a random symbol', function(){

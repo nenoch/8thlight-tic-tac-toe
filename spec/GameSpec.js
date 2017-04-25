@@ -3,18 +3,12 @@ describe("Game", function() {
   beforeEach(function() {
     player1 = {
       name: "Mike",
-      symbol: "X",
-      pickAfield: function(){
-        return 2;
-      }
+      symbol: "X"
     };
 
     player2 = {
       name: "Alan",
-      symbol: "O",
-      pickAfield: function(){
-        return 2;
-      }
+      symbol: "O"
     };
 
     game = new Game(player1, player2);
@@ -40,16 +34,15 @@ describe("Game", function() {
 
   describe("#makeAmove", function() {
 
-
     it("allows the player to choose a field", function(){
-      game.makeAmove(game._currentPlayer.pickAfield());
+      game.makeAmove(2);
       expect(game.currentBoard[2]).toEqual('X');
     });
 
     it("prevents a field to be selected twice during the game", function(){
       spyOn(window, 'alert');
-      game.makeAmove(game._currentPlayer.pickAfield());
-      game.makeAmove(game._currentPlayer.pickAfield());
+      game.makeAmove(2);
+      game.makeAmove(2);
       expect(window.alert).toHaveBeenCalledWith('You can\'t pick this field. Try with an empty one.');
     });
 

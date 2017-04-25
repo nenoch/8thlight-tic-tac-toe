@@ -14,18 +14,5 @@ describe("User", function() {
       expect(user.symbol).toEqual('@');
     });
 
-  });
-
-  xdescribe('#pickAfield', function(){
-
-    it('selects from the interface the number of the field to be played by User', function(){
-      // var spyEvent = spyOnEvent('#1', 'click')
-      // $('#1').click()
-      // expect('click').toHaveBeenTriggeredOn('#1')
-      // expect(spyEvent).toHaveBeenTriggered();
-    });
-
-  });
-
 
 });

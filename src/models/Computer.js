@@ -1,5 +1,5 @@
 function Computer() {
-  this._names = ["Dr.Know", "JARVIS", "Samantha", "Hal"];
+  this._names = ["Dr. Know", "JARVIS", "Samantha", "Hal"];
   this._symbols = ["♜", "♟", "♞", "♛"];
   this.name = this._names[Math.floor (Math.random() * this._names.length)];
   this.symbol = this._symbols[Math.floor (Math.random() * this._symbols.length)];
@@ -50,9 +50,9 @@ var possibleMoves = this.possibleMoves(game);
 
 };
 
-Computer.prototype.pickAfield = function(game) {
-  return this.minimaxMove(game);
-};
+// Computer.prototype.pickAfield = function(game) {
+//   return this.minimaxMove(game);
+// };
 
 Computer.prototype.highestScore = function(hashmap) {
   var scores = [];
