@@ -14,5 +14,7 @@ describe("User", function() {
       expect(user.symbol).toEqual('@');
     });
 
+  });
+
 
 });
