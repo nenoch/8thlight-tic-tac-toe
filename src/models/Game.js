@@ -28,15 +28,6 @@ Game.prototype.makeAmove = function(num) {
   }
 };
 
-Game.prototype.gameOverMessage = function() {
-  if (this.hasWinner()) {
-    return 'The Winner is ' + this.winner.name;
-  }
-  else if (this.isDraw()) {
-    return 'GAME OVER. No one wins this time!';
-  }
-};
-
 Game.prototype.isDraw = function() {
   if (!this.hasWinner()) {
     for(var i = 0; i < this.currentBoard.length; i++) {

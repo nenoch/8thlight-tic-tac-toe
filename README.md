@@ -42,7 +42,7 @@ Follow the brief and improve the game.
 To run the test suite:
 ```
 $ git clone git@github.com:nenoch/minimax-tic-tac-toe.git
-
+$ cd minimax-tic-tac-toe
 // open SpecRunner.html in the browser
 
 ```
@@ -51,7 +51,7 @@ $ git clone git@github.com:nenoch/minimax-tic-tac-toe.git
 
 ```
 $ git clone git@github.com:nenoch/minimax-tic-tac-toe.git
-
+$ cd minimax-tic-tac-toe
 // open index.html in the browser
 
 ```

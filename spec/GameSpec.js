@@ -48,20 +48,6 @@ describe("Game", function() {
 
   });
 
-  describe("#gameOverMessage", function() {
-
-    it("declares that a game is over when game is a draw", function(){
-      game.currentBoard = ['X','X','O','O','O','X','X','O','X'];
-      expect(game.gameOverMessage()).toEqual('GAME OVER. No one wins this time!');
-    });
-
-    it("declares the name of the winner when one of the players wins", function(){
-      game.currentBoard = ['X','X','X',3,'O',5,6,7,'O'];
-      expect(game.gameOverMessage()).toEqual('The Winner is Mike');
-    });
-
-  });
-
   describe("#isDraw", function(){
 
     it("is true when there are no available fields", function(){

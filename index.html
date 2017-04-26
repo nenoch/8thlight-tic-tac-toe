@@ -16,26 +16,7 @@
 
       <h2 id="welcome-message">Welcome to Tic-Tac-Toe!</h2>
 
-      <div id="board">
-
-        <div class="row">
-          <div id="0" class="field"></div>
-          <div id="1" class="field"></div>
-          <div id="2" class="field"></div>
-        </div>
-        <div class="row">
-          <div id="3" class="field"></div>
-          <div id="4" class="field"></div>
-          <div id="5" class="field"></div>
-        </div>
-        <div class="row">
-          <div id="6" class="field"></div>
-          <div id="7" class="field"></div>
-          <div id="8" class="field"></div>
-        </div>
-
-      </div>
-      <form id="start-form" method="post">
+      <form id="select-game-type" method="post">
         <h3>Which type of game would you like to play?</h3>
         <input type='radio' name='game-type' value='1'>Human vs Human<br />
         <input type='radio' name='game-type' value='2'>Human vs Computer<br />
@@ -49,6 +30,8 @@
       <form id="first-move-form" method="post" >
       </form>
 
+      <div id="board"></div>
+
       <h4 id="update"></h4>
       <h2 id="end-of-game"></h2>
 
@@ -57,6 +40,7 @@
     <script src="src/models/User.js"></script>
     <script src="src/models/Game.js"></script>
     <script src="src/jquery-3.1.1.min.js"></script>
+    <script src="src/UI.js"></script>
     <script src="src/index.js"></script>
   </body>
 </html>

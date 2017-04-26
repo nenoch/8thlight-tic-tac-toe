@@ -50,10 +50,6 @@ var possibleMoves = this.possibleMoves(game);
 
 };
 
-// Computer.prototype.pickAfield = function(game) {
-//   return this.minimaxMove(game);
-// };
-
 Computer.prototype.highestScore = function(hashmap) {
   var scores = [];
   for (var k in hashmap){
