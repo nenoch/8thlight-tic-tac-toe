@@ -1,6 +1,5 @@
 function startGame() {
   var gameType = document.querySelector('input[name="game-type"]:checked').value;
-
   if (gameType == 1) {
     humanVShuman();
   }
@@ -22,10 +21,8 @@ function humanVShuman() {
   <input id='playerB-symbol' type='text' maxlength="2" placeholder="Player 2 symbol" required><br />
   <input class='submit-button' type='submit' value='Start!'>`
   ;
-
   playersForm.addEventListener('submit', function(event){
     event.preventDefault();
-
     var playerAname = document.getElementById("playerA-name").value;
     var playerAsymbol = document.getElementById("playerA-symbol").value;
     var playerBname = document.getElementById("playerB-name").value;
@@ -33,7 +30,6 @@ function humanVShuman() {
     var player1 = new User(playerAname, playerAsymbol);
     var player2 = new User(playerBname, playerBsymbol);
     var game = new Game(player1, player2);
-
     document.getElementById("players-form").style.display = 'none';
     setWelcomeMessage(game);
     setFirstMover(game);
@@ -50,7 +46,6 @@ function humanVScomputer() {
   ;
   playersForm.addEventListener('submit', function(event){
     event.preventDefault();
-
     var playerAname = document.getElementById("playerA-name").value;
     var playerAsymbol = document.getElementById("playerA-symbol").value;
     var player1 = new User(playerAname, playerAsymbol);
@@ -132,14 +127,12 @@ function playTheGame(game) {
   $(".field").click(function(){
       var num = this.id;
       game.makeAmove(num);
-      $(this).text(game.currentBoard[num]);
+      this.textContent = game.currentBoard[num];
       computersTurn(game);
       updateTurnInfo(game);
       checkGameOver(game);
     });
 }
-
-
 
 function updateTurnInfo(game) {
   var update = document.getElementById("update");
