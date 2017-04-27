@@ -98,7 +98,7 @@ function setFirstMover(game) {
   ;
   firstMoveForm.addEventListener('submit', function(event){
     event.preventDefault();
-    var firstPlayerIndex = $("input[name='first-mover']:checked").val();
+    var firstPlayerIndex = document.querySelector('input[name="first-mover"]:checked').value;
     game.firstMover(game.players[firstPlayerIndex])
     document.getElementById("first-move-form").style.display = 'none';
     showBoard(game);
