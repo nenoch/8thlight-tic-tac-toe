@@ -129,10 +129,7 @@ function showBoard(game) {
 }
 
 function playTheGame(game) {
-  var fields = document.getElementsByClassName("field");
-  for (var i = 0; i < fields.length; i++){
-    fields[i].addEventListener('click', function(event){
-      event.preventDefault();
+  $(".field").click(function(){
       var num = this.id;
       game.makeAmove(num);
       $(this).text(game.currentBoard[num]);
@@ -140,23 +137,9 @@ function playTheGame(game) {
       updateTurnInfo(game);
       checkGameOver(game);
     });
-  }
 }
 
-// function stopTheGame(game) {
-//   var fields = document.getElementsByClassName("field");
-//   for (var i = 0; i < fields.length; i++){
-//     fields[i].removeEventListener('click', function(event){
-//       event.preventDefault();
-//       var num = this.id;
-//       game.makeAmove(num);
-//       $(this).text(game.currentBoard[num]);
-//       computersTurn(game);
-//       updateTurnInfo(game);
-//       checkGameOver(game);
-//     });
-//   }
-// }
+
 
 function updateTurnInfo(game) {
   var update = document.getElementById("update");
@@ -178,13 +161,12 @@ function checkGameOver(game) {
   var div = document.getElementById("end-of-game");
   div.textContent = gameOverMessage(game);
   if (div.innerHTML != "") {
+    $(".field").unbind('click');
     document.getElementById("update").style.display = 'none';
-    // $(".field").unbind('click');
-    var button = `
+    document.getElementById("new-game").innerHTML = `
     <button type="button" onclick="location.reload()"
     class="btn btn-primary btn-lg">Start a New Game</button>`
     ;
-    $(button).insertAfter('#end-of-game');
   }
 }
 
