@@ -1,5 +1,5 @@
 function startGame() {
-  var gameType = $("input[name='game-type']:checked").val();
+  var gameType = document.querySelector('input[name="game-type"]:checked').value;
 
   if (gameType == 1) {
     humanVShuman();
@@ -9,56 +9,54 @@ function startGame() {
   } else {
     computerVScomputer();
   };
-
-  $("#select-game-type").hide();
+document.getElementById("select-game-type").style.display = 'none';
 };
 
 function humanVShuman() {
   var playersForm = document.getElementById("players-form");
   playersForm.innerHTML = `
-  <h3>Enter your names and favourite symbols to start playing!</h3>
-  <input id='playerA-name' type='text' placeholder='Player A Name'><br />
-  <input id='playerA-symbol' type='text' placeholder='Player A Symbol'><br />
-  <input id='playerB-name' type='text' placeholder='Player B Name'><br />
-  <input id='playerB-symbol' type='text' placeholder='Player B Symbol'><br />
+  <h3>Enter your names and 1 or 2 digits symbols to start playing!</h3>
+  <input id='playerA-name' type='text' placeholder='Player 1' required><span>➜</span>
+  <input id='playerA-symbol' type='text' maxlength="2" placeholder="Player 1 symbol" required><br />
+  <input id='playerB-name' type='text' placeholder='Player 2' required><span>➜</span>
+  <input id='playerB-symbol' type='text' maxlength="2" placeholder="Player 2 symbol" required><br />
   <input class='submit-button' type='submit' value='Start!'>`
   ;
 
   playersForm.addEventListener('submit', function(event){
     event.preventDefault();
 
-    var playerAname = $("input#playerA-name").val();
-    var playerAsymbol = $("input#playerA-symbol").val();
-    var playerBname = $("input#playerB-name").val();
-    var playerBsymbol = $("input#playerB-symbol").val();
+    var playerAname = document.getElementById("playerA-name").value;
+    var playerAsymbol = document.getElementById("playerA-symbol").value;
+    var playerBname = document.getElementById("playerB-name").value;
+    var playerBsymbol = document.getElementById("playerB-symbol").value;
     var player1 = new User(playerAname, playerAsymbol);
     var player2 = new User(playerBname, playerBsymbol);
     var game = new Game(player1, player2);
 
-    $("#players-form").hide();
+    document.getElementById("players-form").style.display = 'none';
     setWelcomeMessage(game);
     setFirstMover(game);
-    showBoard(game);
   });
 }
 
 function humanVScomputer() {
   var playersForm = document.getElementById("players-form");
   playersForm.innerHTML = `
-  <h3>Enter your name and favourite symbol to start playing!</h3>
-  <input id='playerA-name' type='text' placeholder='Player Name'><br />
-  <input id='playerA-symbol' type='text' placeholder='Player Symbol'><br />
+  <h3>Enter your name and a 1 or 2 digits symbol to start playing!</h3>
+  <input id='playerA-name' type='text' placeholder='Your name' required><span>➜</span>
+  <input id='playerA-symbol' type='text' maxlength="2" placeholder='Your symbol' required><br />
   <input type='submit' value='Start!'>`
   ;
   playersForm.addEventListener('submit', function(event){
     event.preventDefault();
 
-    var playerAname = $("input#playerA-name").val();
-    var playerAsymbol = $("input#playerA-symbol").val();
+    var playerAname = document.getElementById("playerA-name").value;
+    var playerAsymbol = document.getElementById("playerA-symbol").value;
     var player1 = new User(playerAname, playerAsymbol);
     var player2 = new Computer();
     var game = new Game(player1, player2);
-    $("#players-form").hide();
+    document.getElementById("players-form").style.display = 'none';
     setWelcomeMessage(game);
     setFirstMover(game);
   });
@@ -75,7 +73,7 @@ function computerVScomputer() {
     var player1 = new Computer();
     var player2 = new Computer();
     var game = new Game(player1, player2);
-    $("#players-form").hide();
+    document.getElementById("players-form").style.display = 'none';
     setWelcomeMessage(game);
     setFirstMover(game);
   });
@@ -83,17 +81,17 @@ function computerVScomputer() {
 
 function setWelcomeMessage(game) {
   var welcome = document.getElementById("welcome-message");
-  welcome.innerHTML = `
+  welcome.textContent = `
   It's Tic-Tac-Toe time for ${game.players[0].name}
-  and ${game.players[1].name}!"`
+  and ${game.players[1].name}!`
   ;
 }
 
 function setFirstMover(game) {
   var firstMoveForm = document.getElementById("first-move-form");
   firstMoveForm.innerHTML = `
-  <label>Would you like to choose who moves first?</label><br />
-  <input type='radio' name='first-mover' value='0'> ${game.players[0].name}<br />
+  <h3>Would you like to choose who moves first?</h3><br />
+  <input type='radio' name='first-mover' value='0' required> ${game.players[0].name}<br />
   <input type='radio' name='first-mover' value='1'> ${game.players[1].name}<br />
   <input type='radio' name='first-mover' value='0'> I don't care<br />
   <input type='submit' value='Play!'>`
@@ -102,7 +100,7 @@ function setFirstMover(game) {
     event.preventDefault();
     var firstPlayerIndex = $("input[name='first-mover']:checked").val();
     game.firstMover(game.players[firstPlayerIndex])
-    $("#first-move-form").hide();
+    document.getElementById("first-move-form").style.display = 'none';
     showBoard(game);
   });
 }
@@ -127,7 +125,7 @@ function showBoard(game) {
   </div>
   `;
   playTheGame(game);
-  checkComputersTurn(game);
+  computersTurn(game);
 }
 
 function playTheGame(game) {
@@ -138,15 +136,33 @@ function playTheGame(game) {
       var num = this.id;
       game.makeAmove(num);
       $(this).text(game.currentBoard[num]);
-      checkComputersTurn(game);
+      computersTurn(game);
       updateTurnInfo(game);
       checkGameOver(game);
     });
   }
 }
 
+// function stopTheGame(game) {
+//   var fields = document.getElementsByClassName("field");
+//   for (var i = 0; i < fields.length; i++){
+//     fields[i].removeEventListener('click', function(event){
+//       event.preventDefault();
+//       var num = this.id;
+//       game.makeAmove(num);
+//       $(this).text(game.currentBoard[num]);
+//       computersTurn(game);
+//       updateTurnInfo(game);
+//       checkGameOver(game);
+//     });
+//   }
+// }
+
 function updateTurnInfo(game) {
-  $("#update").text(game._currentPlayer.name + "'s Turn!");
+  var update = document.getElementById("update");
+  update.textContent = `
+  ${game._currentPlayer.name}'s Turn!`
+  ;
 }
 
 function gameOverMessage(game) {
@@ -159,11 +175,11 @@ function gameOverMessage(game) {
 };
 
 function checkGameOver(game) {
-  $("#end-of-game").text(gameOverMessage(game));
   var div = document.getElementById("end-of-game");
+  div.textContent = gameOverMessage(game);
   if (div.innerHTML != "") {
-    $("#update").hide();
-    $('.field').unbind('click');
+    document.getElementById("update").style.display = 'none';
+    // $(".field").unbind('click');
     var button = `
     <button type="button" onclick="location.reload()"
     class="btn btn-primary btn-lg">Start a New Game</button>`
@@ -172,11 +188,12 @@ function checkGameOver(game) {
   }
 }
 
-function checkComputersTurn(game) {
+function computersTurn(game) {
   if (game._currentPlayer instanceof Computer) {
     var num = game._currentPlayer.minimaxMove(game);
+    var div = document.getElementById(num);
     setTimeout(function() {
-      $("#" + num).trigger("click");
+      div.click();
     }, 1000);
   }
 }
