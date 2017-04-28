@@ -1,8 +1,6 @@
-function Computer() {
-  this._names = ["Dr. Know", "JARVIS", "Samantha", "Hal"];
-  this._symbols = ["♜", "♟", "♞", "♛"];
-  this.name = this._names[Math.floor (Math.random() * this._names.length)];
-  this.symbol = this._symbols[Math.floor (Math.random() * this._symbols.length)];
+function Computer(name, symbol) {
+  this.name = name;
+  this.symbol = symbol;
 }
 
 Computer.prototype.possibleMoves = function(game) {
@@ -41,7 +39,7 @@ var possibleMoves = this.possibleMoves(game);
     return this.bestMove(movesScore);
   }
 
-  if (game._currentPlayer == this) {
+  if (game.currentPlayer == this) {
     return this.highestScore(movesScore);
   }
   else {

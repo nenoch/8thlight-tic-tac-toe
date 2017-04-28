@@ -1,7 +1,7 @@
 function Game(player1, player2) {
   this.players = [player1, player2];
   this.currentBoard = [0,1,2,3,4,5,6,7,8];
-  this._currentPlayer = this.players[0];
+  this.currentPlayer = this.players[0];
   this.winner;
 }
 
@@ -10,16 +10,16 @@ Game.prototype.firstMover = function(player) {
     var first = this.players.pop();
     this.players.splice(0,0, first);
   };
-  this._currentPlayer = this.players[0];
+  this.currentPlayer = this.players[0];
 };
 
 Game.prototype.switchTurn = function() {
-  var index = this.players.indexOf(this._currentPlayer) == 0 ? 1 : 0;
-  this._currentPlayer = this.players[index];
+  var index = this.players.indexOf(this.currentPlayer) == 0 ? 1 : 0;
+  this.currentPlayer = this.players[index];
 };
 
 Game.prototype.makeAmove = function(num) {
-  var mark = this._currentPlayer.symbol;
+  var mark = this.currentPlayer.symbol;
   if (this.currentBoard[num] == num) {
     this.currentBoard[num] = mark;
     this.switchTurn();

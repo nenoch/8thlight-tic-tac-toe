@@ -49,7 +49,7 @@ function humanVScomputer() {
     var playerAname = document.getElementById("playerA-name").value;
     var playerAsymbol = document.getElementById("playerA-symbol").value;
     var player1 = new User(playerAname, playerAsymbol);
-    var player2 = new Computer();
+    var player2 = new Computer("Samantha", "♛");
     var game = new Game(player1, player2);
     document.getElementById("players-form").style.display = 'none';
     setWelcomeMessage(game);
@@ -65,8 +65,8 @@ function computerVScomputer() {
   ;
   playersForm.addEventListener('submit', function(event){
     event.preventDefault();
-    var player1 = new Computer();
-    var player2 = new Computer();
+    var player1 = new Computer("Samantha", "♛");
+    var player2 = new Computer("JARVIS", "♞");
     var game = new Game(player1, player2);
     document.getElementById("players-form").style.display = 'none';
     setWelcomeMessage(game);
@@ -119,6 +119,7 @@ function showBoard(game) {
     <div id="8" class="field"></div>
   </div>
   `;
+  turnInfo(game)
   playTheGame(game);
   computersTurn(game);
 }
@@ -129,15 +130,15 @@ function playTheGame(game) {
       game.makeAmove(num);
       this.textContent = game.currentBoard[num];
       computersTurn(game);
-      updateTurnInfo(game);
+      turnInfo(game);
       checkGameOver(game);
     });
 }
 
-function updateTurnInfo(game) {
+function turnInfo(game) {
   var update = document.getElementById("update");
   update.textContent = `
-  ${game._currentPlayer.name}'s Turn!`
+  ${game.currentPlayer.name}'s Turn!`
   ;
 }
 
@@ -164,8 +165,8 @@ function checkGameOver(game) {
 }
 
 function computersTurn(game) {
-  if (game._currentPlayer instanceof Computer) {
-    var num = game._currentPlayer.minimaxMove(game);
+  if (game.currentPlayer instanceof Computer) {
+    var num = game.currentPlayer.minimaxMove(game);
     var div = document.getElementById(num);
     setTimeout(function() {
       div.click();

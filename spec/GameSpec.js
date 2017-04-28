@@ -14,11 +14,27 @@ describe("Game", function() {
     game = new Game(player1, player2);
   });
 
+  describe("at initialization", function(){
+
+    it("has 2 players", function(){
+      expect(game.players).toEqual([player1, player2]);
+    });
+
+    it("has a 9 digits board", function(){
+      expect(game.currentBoard).toEqual([0,1,2,3,4,5,6,7,8]);
+    });
+
+    it("has current player set to the first player", function(){
+      expect(game.players[0]).toEqual(game.currentPlayer);
+    });
+
+  });
+
   describe("#firstMover", function(){
 
     it("allows the user to decide who moves first", function(){
       game.firstMover(player2);
-      expect(game._currentPlayer).toEqual(player2);
+      expect(game.currentPlayer).toEqual(player2);
     });
 
   });
@@ -27,7 +43,7 @@ describe("Game", function() {
 
     it("allows players to play one at the time", function(){
       game.switchTurn()
-      expect(game._currentPlayer.name).toEqual('Alan');
+      expect(game.currentPlayer.name).toEqual('Alan');
     });
 
   });

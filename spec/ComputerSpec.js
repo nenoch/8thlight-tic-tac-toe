@@ -1,8 +1,7 @@
 describe("Computer", function(){
 
   beforeEach(function(){
-    spyOn(Math, 'random').and.returnValue(0.2);
-    computer = new Computer();
+    computer = new Computer("Samantha", "♜");
 
     player2 = {
       name: "Alan",
@@ -10,18 +9,6 @@ describe("Computer", function(){
     };
 
     game = new Game(computer,player2)
-  });
-
-  describe('at initialization', function(){
-
-    it('gets a random name', function(){
-      expect(computer.name).toEqual('Dr. Know');
-    });
-
-    it('gets a random symbol', function(){
-      expect(computer.symbol).toEqual("♜");
-    });
-
   });
 
   describe('#possibleMoves', function(){
