@@ -43,8 +43,7 @@ _Note: the input field doesn't allow more than 2 digits_</div>
 #### 5.
 <div style="text-align:center; max-width:500px;">![Choose who moves first](./imgs/choose_move.png)</div>
 
-**6.**<div style="text-align:center; max-width:500px;">![Unbeatable computer](./imgs/unbeatable_computerVShuman.png)!</div>
-<div style="text-align:center; max-width:500px;">![Unbeatable computer](./imgs/unbeatable_computerVScomputer.png)</div>
+**6.**<div style="text-align:center; max-width:200px;">![Unbeatable computer](./imgs/unbeatable_computerVShuman.png)!</div><div style="text-align:center; max-width:200px;">![Unbeatable computer](./imgs/unbeatable_computerVScomputer.png)</div>
 
 **Step #1**<div style="text-align:center">![Landing Page](./imgs/1.png)</div>
 
