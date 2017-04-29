@@ -31,7 +31,7 @@ Follow the brief and improve the game.
 6. The computer is unbeatable
 
 #### 1.
-<div style="text-align:center;">![Bad user input](./imgs/bad_input1.png)![Bad user input](./imgs/bad_input2.png)![Bad user input](./imgs/bad_input3.png)</div>   
+<div style="text-align:center; max-width:500px;">![Bad user input](./imgs/bad_input1.png)![Bad user input](./imgs/bad_input2.png)![Bad user input](./imgs/bad_input3.png)</div>   
 
 #### 3.
 <div style="text-align:center; max-width:500px;">![Choose Game Type](./imgs/choose_gametype.png)</div>
@@ -43,8 +43,7 @@ _Note: the input field doesn't allow more than 2 digits_</div>
 #### 5.
 <div style="text-align:center; max-width:500px;">![Choose who moves first](./imgs/choose_move.png)</div>
 
-#### 6.
-<div style="text-align:center; max-width:500px;">![Unbeatable computer](./imgs/unbeatable_computerVShuman.png)!</div>
+**6.**<div style="text-align:center; max-width:500px;">![Unbeatable computer](./imgs/unbeatable_computerVShuman.png)!</div>
 <div style="text-align:center; max-width:500px;">![Unbeatable computer](./imgs/unbeatable_computerVScomputer.png)</div>
 
 **Step #1**<div style="text-align:center">![Landing Page](./imgs/1.png)</div>
