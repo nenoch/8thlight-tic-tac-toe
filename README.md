@@ -20,15 +20,31 @@ Follow the brief and improve the game.
 
 #### Client's specifications
 
-- The game must handle bad user input
-- The game must provide better feedforward and feedback messages to the user
-- A player can choose her symbol (beyond X and O)
-- Players can decide who moves first
-- The user can choose the game type:
-  - human vs human
-  - human vs computer
-  - computer vs computer
-- The computer is unbeatable
+1. The game must handle bad user input
+2. The game must provide better feedforward and feedback messages to the user
+3. The user can choose the game type:
+   * human vs human
+   * human vs computer
+   * computer vs computer
+4. A player can choose her symbol (beyond X and O)
+5. Players can decide who moves first
+6. The computer is unbeatable
+
+#### 1.
+<div style="text-align:center; max-width:500px;">![Bad user input](./imgs/bad_input1.png)![Bad user input](./imgs/bad_input2.png)![Bad user input](./imgs/bad_input3.png)</div>   
+
+#### 3.
+<div style="text-align:center; max-width:500px;">![Choose Game Type](./imgs/choose_gametype.png)</div>
+
+#### 4.
+<div style="text-align:center; max-width:500px;">![Two human players](./imgs/humanVShuman.png)![Choose symbol](./imgs/choose_symbol.png)
+_Note: the input field doesn't allow more than 2 digits_</div>
+
+#### 5.
+<div style="text-align:center; max-width:500px;">![Choose who moves first](./imgs/choose_move.png)</div>
+
+#### 6.
+<div style="text-align:center; max-width:500px;">![Unbeatable computer](./imgs/unbeatable_computerVShuman.png)![Unbeatable computer](./imgs/unbeatable_computerVScomputer.png)</div>
 
 ### Technology
 
@@ -46,6 +62,9 @@ $ cd minimax-tic-tac-toe
 // open SpecRunner.html in the browser
 
 ```
+### Play Tic-Tac-Toe online
+
+https://unbeat-tic-tac-toe.herokuapp.com/
 
 ### How to play Tic-Tac-Toe locally
 
