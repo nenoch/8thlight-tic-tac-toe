@@ -30,22 +30,16 @@ Follow the brief and improve the game.
 5. Players can decide who moves first
 6. The computer is unbeatable
 
-#### 1.
-<div style="text-align:center; max-width:500px;">![Bad user input](./imgs/bad_input1.png)![Bad user input](./imgs/bad_input2.png)![Bad user input](./imgs/bad_input3.png)</div>   
+**1.**<div style="text-align:center;">![Bad user input](./imgs/bad_input1.png)![Bad user input](./imgs/bad_input2.png)![Bad user input](./imgs/bad_input3.png)</div>   
 
-#### 3.
-<div style="text-align:center; max-width:500px;">![Choose Game Type](./imgs/choose_gametype.png)</div>
+**3.**<div style="text-align:center;">![Choose Game Type](./imgs/choose_gametype.png)</div>
 
-#### 4.
-<div style="text-align:center; max-width:500px;">![Two human players](./imgs/humanVShuman.png)![Choose symbol](./imgs/choose_symbol.png)
+**4.**<div style="text-align:center;">![Two human players](./imgs/humanVShuman.png)![Choose symbol](./imgs/choose_symbol.png)
 _Note: the input field doesn't allow more than 2 digits_</div>
 
-#### 5.
-<div style="text-align:center; max-width:500px;">![Choose who moves first](./imgs/choose_move.png)</div>
+**5.**<div style="text-align:center;">![Choose who moves first](./imgs/choose_move.png)</div>
 
-**6.**<div style="text-align:center; max-width:200px;">![Unbeatable computer](./imgs/unbeatable_computerVShuman.png)!</div><div style="text-align:center; max-width:200px;">![Unbeatable computer](./imgs/unbeatable_computerVScomputer.png)</div>
-
-**Step #1**<div style="text-align:center">![Landing Page](./imgs/1.png)</div>
+**6.**<div style="text-align:center;">![Unbeatable computer](./imgs/unbeatable_computerVShuman.png)![Unbeatable computer](./imgs/unbeatable_computerVScomputer.png)</div>
 
 ### Technology
 
