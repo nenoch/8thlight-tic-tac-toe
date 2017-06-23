@@ -8,7 +8,7 @@ describe("Computer", function(){
       symbol: "O"
     };
 
-    game = new Game(computer,player2)
+    game = new Game(player2,computer)
   });
 
   describe('#possibleMoves', function(){

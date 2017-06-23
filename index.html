@@ -13,16 +13,22 @@
   <body>
 
     <div class='container-fluid text-center'>
-
-      <h2 id="welcome-message">Welcome to Tic-Tac-Toe!</h2>
-
-      <form id="select-game-type" method="post">
-        <h3>Which type of game would you like to play?</h3>
-        <input type='radio' name='game-type' value='1' required>Human vs Human<br />
-        <input type='radio' name='game-type' value='2'>Human vs Computer<br />
-        <input type='radio' name='game-type' value='3'>Computer vs Computer<br />
-        <input type='submit' value='Next'>
-      </form>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 id="welcome-message">Welcome to Tic-Tac-Toe!</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form id="select-game-type" method="post">
+          <h3>Which type of game would you like to play?</h3>
+          <input type='radio' name='game-type' value='1' required>Human vs Human<br />
+          <input type='radio' name='game-type' value='2'>Human vs Computer<br />
+          <input type='radio' name='game-type' value='3'>Computer vs Computer<br />
+          <input type='submit' value='Next'>
+        </form>
+      </div>
+    </div>
 
       <form id="players-form" method="post">
       </form>

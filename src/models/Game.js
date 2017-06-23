@@ -2,7 +2,6 @@ function Game(player1, player2) {
   this.players = [player1, player2];
   this.currentBoard = [0,1,2,3,4,5,6,7,8];
   this.currentPlayer = this.players[0];
-  this.winner;
 }
 
 Game.prototype.firstMover = function(player) {
@@ -40,6 +39,12 @@ Game.prototype.isDraw = function() {
   return false;
 };
 
+Game.prototype.declareWinner = function () {
+  var index = this.players.indexOf(this.currentPlayer) === 0 ? 1 : 0;
+  var winner = this.players[index];
+  return winner.name;
+};
+
 Game.prototype.hasWinner = function() {
   var winningCombos = [
     [0, 1, 2],
@@ -58,9 +63,7 @@ Game.prototype.hasWinner = function() {
     var b = winningCombos[i][1];
     var c = winningCombos[i][2];
 
-    if (this.currentBoard[a] && this.currentBoard[a] == this.currentBoard[b] && this.currentBoard[b] == this.currentBoard[c]) {
-      var winnerSymbol = this.currentBoard[a];
-      this.winner = this.players[0].symbol == winnerSymbol ? this.players[0] : this.players[1];
+    if (this.currentBoard[a] && this.currentBoard[a] === this.currentBoard[b] && this.currentBoard[b] === this.currentBoard[c]) {
       return true;
     }
   }

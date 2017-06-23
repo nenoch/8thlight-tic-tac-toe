@@ -100,10 +100,13 @@ describe("Game", function() {
       expect(game.hasWinner()).toEqual(true);
     });
 
-    it("assigns a player to winner when true", function(){
+  });
+
+  describe("#declareWinner", function(){
+
+    it("declares the name of the winner if called when hasWinner() == true", function(){
       game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
-      game.hasWinner();
-      expect(game.winner).toEqual(player1);
+      expect(game.declareWinner()).toEqual("Alan");
     });
 
   });

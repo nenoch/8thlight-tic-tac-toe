@@ -10,10 +10,14 @@ Computer.prototype.possibleMoves = function(game) {
 };
 
 Computer.prototype.score = function(game) {
-  if (game.hasWinner() && game.winner != this) {
+  if (game.hasWinner() && (game.declareWinner() !== this.name)) {
+    console.log("-1",this.name);
+    console.log("-1",game.declareWinner());
     return -1;
   }
-  else if (game.hasWinner() && game.winner == this){
+  else if (game.hasWinner() && (game.declareWinner() == this.name)){
+    console.log("1",this.name);
+    console.log("1",game.declareWinner());
     return 1;
   }
   else if (game.isDraw()){

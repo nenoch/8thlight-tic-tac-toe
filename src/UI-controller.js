@@ -144,7 +144,7 @@ function turnInfo(game) {
 
 function gameOverMessage(game) {
   if (game.hasWinner()) {
-    return 'The Winner is ' + game.winner.name;
+    return 'The Winner is ' + game.declareWinner();
   }
   else if (game.isDraw()) {
     return 'GAME OVER. No one wins this time!';
