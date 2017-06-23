@@ -69,7 +69,7 @@ $ cd minimax-tic-tac-toe
 // open index.html in the browser
 
 ```
-#### Approach
+### Approach
 
 **Challenges:**
 - Refactor a previous tic-tac-toe game to include new specifications.
