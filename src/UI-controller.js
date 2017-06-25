@@ -107,16 +107,25 @@ function showBoard(game) {
     <div id="0" class="field"></div>
     <div id="1" class="field"></div>
     <div id="2" class="field"></div>
+    <div id="3" class="field"></div>
   </div>
   <div class="row">
-    <div id="3" class="field"></div>
     <div id="4" class="field"></div>
     <div id="5" class="field"></div>
-  </div>
-  <div class="row">
     <div id="6" class="field"></div>
     <div id="7" class="field"></div>
+  </div>
+  <div class="row">
     <div id="8" class="field"></div>
+    <div id="9" class="field"></div>
+    <div id="10" class="field"></div>
+    <div id="11" class="field"></div>
+  </div>
+  <div class="row">
+    <div id="12" class="field"></div>
+    <div id="13" class="field"></div>
+    <div id="14" class="field"></div>
+    <div id="15" class="field"></div>
   </div>
   `;
   turnInfo(game)
@@ -127,8 +136,11 @@ function showBoard(game) {
 function playTheGame(game) {
   $(".field").click(function(){
       var num = this.id;
+      console.log(num);
       game.makeAmove(num);
+      console.log(game.currentBoard[num]);
       this.textContent = game.currentBoard[num];
+      console.log("content", this.textContent);
       computersTurn(game);
       turnInfo(game);
       checkGameOver(game);
@@ -140,6 +152,7 @@ function turnInfo(game) {
   update.textContent = `
   ${game.currentPlayer.name}'s Turn!`
   ;
+  console.log(game.currentPlayer.name);
 }
 
 function gameOverMessage(game) {
@@ -166,7 +179,9 @@ function checkGameOver(game) {
 
 function computersTurn(game) {
   if (game.currentPlayer instanceof Computer) {
+    console.log("hello");
     var num = game.currentPlayer.minimaxMove(game);
+    console.log(num);
     var div = document.getElementById(num);
     setTimeout(function() {
       div.click();

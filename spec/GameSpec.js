@@ -20,8 +20,8 @@ describe("Game", function() {
       expect(game.players).toEqual([player1, player2]);
     });
 
-    it("has a 9 digits board", function(){
-      expect(game.currentBoard).toEqual([0,1,2,3,4,5,6,7,8]);
+    it("has a 16 digits board", function(){
+      expect(game.currentBoard).toEqual([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
     });
 
     it("has current player set to the first player", function(){
@@ -67,17 +67,17 @@ describe("Game", function() {
   describe("#isDraw", function(){
 
     it("is true when there are no available fields", function(){
-      game.currentBoard = ['X','X','O','O','O','X','X','O','X'];
+      game.currentBoard = ['X','O','X','O','O','X','O','X','X','O','O','X','X','O','X','O'];
       expect(game.isDraw()).toEqual(true);
     });
 
     it("is false when fields are still available", function(){
-      game.currentBoard = ['X',1,2,'O',4, 5,'X','O','X'];
+      game.currentBoard = ['X','O', 2,'O','O', 5,'O','X','X','O','O','X','X','O','X','O'];
       expect(game.isDraw()).toEqual(false);
     });
 
     it("is false when there is a winner", function(){
-      game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      game.currentBoard = ['X','X','X','X','O','O','O', 7, 8, 9, 10, 11, 12, 13, 14, 15];
       expect(game.isDraw()).toEqual(false);
     });
 
@@ -86,17 +86,17 @@ describe("Game", function() {
   describe("#hasWinner", function(){
 
     it("is false when there is no winner", function(){
-      game.currentBoard = ['X','X','O','O','O','X','X','O','X'];
+      game.currentBoard = ['X','O','X','O','O','X','O','X','X','O','O','X','X','O','X','O'];
       expect(game.hasWinner()).toEqual(false);
     });
 
     it("is true when there is a winner", function(){
-      game.currentBoard = ['X','X','X',3,'O',5,6,7,'O'];
+      game.currentBoard = ['X','X','X','X','O','O','O', 7, 8, 9, 10, 11, 12, 13, 14, 15];
       expect(game.hasWinner()).toEqual(true);
     });
 
     it("is true when there is a winner and all fields are taken", function(){
-      game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      game.currentBoard = ['X','O','X','O','X','O','O','X','X','O','X','O','O','X','O','X'];
       expect(game.hasWinner()).toEqual(true);
     });
 
@@ -104,8 +104,8 @@ describe("Game", function() {
 
   describe("#declareWinner", function(){
 
-    it("declares the name of the winner if called when hasWinner() == true", function(){
-      game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
+    it("declares the name of the winner if called when hasWinner() === true", function(){
+      game.currentBoard = ['X','O','X','O','X','O','O','X','X','O','X','O','O','X','O','X'];
       expect(game.declareWinner()).toEqual("Alan");
     });
 

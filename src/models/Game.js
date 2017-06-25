@@ -1,6 +1,6 @@
 function Game(player1, player2) {
   this.players = [player1, player2];
-  this.currentBoard = [0,1,2,3,4,5,6,7,8];
+  this.currentBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
   this.currentPlayer = this.players[0];
 }
 
@@ -40,21 +40,25 @@ Game.prototype.isDraw = function() {
 };
 
 Game.prototype.declareWinner = function () {
-  var index = this.players.indexOf(this.currentPlayer) === 0 ? 1 : 0;
-  var winner = this.players[index];
-  return winner.name;
+  if (this.hasWinner()){
+    var index = this.players.indexOf(this.currentPlayer) === 0 ? 1 : 0;
+    var winner = this.players[index];
+    return winner.name;
+  }
 };
 
 Game.prototype.hasWinner = function() {
   var winningCombos = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
+    [0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [8, 9, 10, 11],
+    [12, 13, 14, 15],
+    [0, 4, 8, 12],
+    [1, 5, 9, 13],
+    [2, 6, 10, 14],
+    [3, 7, 11, 15],
+    [0, 5, 10, 15],
+    [3, 6, 9, 12]
   ];
 
   for(var i = 0; i < winningCombos.length; i++) {
@@ -62,8 +66,9 @@ Game.prototype.hasWinner = function() {
     var a = winningCombos[i][0];
     var b = winningCombos[i][1];
     var c = winningCombos[i][2];
+    var d = winningCombos[i][3];
 
-    if (this.currentBoard[a] && this.currentBoard[a] === this.currentBoard[b] && this.currentBoard[b] === this.currentBoard[c]) {
+    if (this.currentBoard[a] && this.currentBoard[a] === this.currentBoard[b] && this.currentBoard[b] === this.currentBoard[c] && this.currentBoard[c] === this.currentBoard[d]) {
       return true;
     }
   }
