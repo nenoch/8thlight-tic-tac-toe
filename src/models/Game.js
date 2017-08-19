@@ -13,12 +13,13 @@ Game.prototype.firstMover = function(player) {
 };
 
 Game.prototype.switchTurn = function() {
-  var index = this.players.indexOf(this.currentPlayer) == 0 ? 1 : 0;
+  var index = this.players.indexOf(this.currentPlayer) === 0 ? 1 : 0;
   this.currentPlayer = this.players[index];
 };
 
 Game.prototype.makeAmove = function(num) {
   var mark = this.currentPlayer.symbol;
+  console.log("mark", mark);
   if (this.currentBoard[num] == num) {
     this.currentBoard[num] = mark;
     this.switchTurn();
@@ -37,12 +38,6 @@ Game.prototype.isDraw = function() {
     return true;
   }
   return false;
-};
-
-Game.prototype.declareWinner = function () {
-  var index = this.players.indexOf(this.currentPlayer) === 0 ? 1 : 0;
-  var winner = this.players[index];
-  return winner.name;
 };
 
 Game.prototype.hasWinner = function() {
@@ -68,4 +63,10 @@ Game.prototype.hasWinner = function() {
     }
   }
   return false;
+};
+
+Game.prototype.declareWinner = function () {
+  var index = this.players.indexOf(this.currentPlayer) === 0 ? 1 : 0;
+  var winner = this.players[index];
+  return winner.name;
 };

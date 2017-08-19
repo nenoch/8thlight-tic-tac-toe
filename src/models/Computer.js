@@ -13,7 +13,7 @@ Computer.prototype.score = function(game) {
   if (game.hasWinner() && (game.declareWinner() !== this.name)) {
     return -1;
   }
-  else if (game.hasWinner() && (game.declareWinner() == this.name)){
+  else if (game.hasWinner() && (game.declareWinner() === this.name)){
     return 1;
   }
   else if (game.isDraw()){
@@ -35,11 +35,11 @@ var possibleMoves = this.possibleMoves(game);
     this.resetBoard(game, move);
   }
 
-  if (depth == possibleMoves.length) {
+  if (depth === possibleMoves.length) {
     return this.bestMove(movesScore);
   }
 
-  if (game.currentPlayer == this) {
+  if (game.currentPlayer === this) {
     return this.highestScore(movesScore);
   }
   else {
