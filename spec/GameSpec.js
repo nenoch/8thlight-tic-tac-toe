@@ -20,8 +20,8 @@ describe("Game", function() {
       expect(game.players).toEqual([player1, player2]);
     });
 
-    it("has a 9 digits board", function(){
-      expect(game.currentBoard).toEqual([0,1,2,3,4,5,6,7,8]);
+    it("has a 16 digits board", function(){
+      expect(game.currentBoard).toEqual([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
     });
 
     it("has current player set to the first player", function(){
@@ -86,17 +86,12 @@ describe("Game", function() {
   describe("#hasWinner", function(){
 
     it("is false when there is no winner", function(){
-      game.currentBoard = ['X','X','O','O','O','X','X','O','X'];
+      game.currentBoard = ['X','O','X','X','O','X','O','O','X','O','X','X','O','X','O','O'];
       expect(game.hasWinner()).toEqual(false);
     });
 
     it("is true when there is a winner", function(){
-      game.currentBoard = ['X','X','X',3,'O',5,6,7,'O'];
-      expect(game.hasWinner()).toEqual(true);
-    });
-
-    it("is true when there is a winner and all fields are taken", function(){
-      game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      game.currentBoard = ['X','X','X','X','O','O','O',7,8,9,10,11,12,13,14,15];
       expect(game.hasWinner()).toEqual(true);
     });
 
@@ -104,9 +99,16 @@ describe("Game", function() {
 
   describe("#declareWinner", function(){
 
-    it("declares the name of the winner if called when hasWinner() == true", function(){
-      game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
-      expect(game.declareWinner()).toEqual("Alan");
+    it("declares the name of the winner if there is one", function(){
+      game.currentBoard = ['X','X','X','X','O','O','O',7,8,9,10,11,12,13,14,15];
+      game.winner = player1;
+      expect(game.declareWinner()).toEqual("Mike");
+    });
+
+    it("does not declare the name of the winner if there is none", function(){
+      game.currentBoard = ['X','O','X','X','O','X','O','O','X','O','X','X','O','X','O','O'];
+      game.winner;
+      expect(game.declareWinner()).toEqual(undefined);
     });
 
   });

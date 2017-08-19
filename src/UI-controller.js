@@ -107,16 +107,25 @@ function showBoard(game) {
     <div id="0" class="field"></div>
     <div id="1" class="field"></div>
     <div id="2" class="field"></div>
+    <div id="3" class="field"></div>
   </div>
   <div class="row">
-    <div id="3" class="field"></div>
     <div id="4" class="field"></div>
     <div id="5" class="field"></div>
-  </div>
-  <div class="row">
     <div id="6" class="field"></div>
     <div id="7" class="field"></div>
+  </div>
+  <div class="row">
     <div id="8" class="field"></div>
+    <div id="9" class="field"></div>
+    <div id="10" class="field"></div>
+    <div id="11" class="field"></div>
+  </div>
+  <div class="row">
+    <div id="12" class="field"></div>
+    <div id="13" class="field"></div>
+    <div id="14" class="field"></div>
+    <div id="15" class="field"></div>
   </div>
   `;
   turnInfo(game)
@@ -124,6 +133,7 @@ function showBoard(game) {
   computersTurn(game);
 }
 
+// why does it have to be within the click??
 function playTheGame(game) {
   $(".field").click(function(){
       var num = this.id;
@@ -132,7 +142,7 @@ function playTheGame(game) {
       computersTurn(game);
       turnInfo(game);
       checkGameOver(game);
-    });
+  });
 }
 
 function turnInfo(game) {
@@ -143,24 +153,24 @@ function turnInfo(game) {
 }
 
 function gameOverMessage(game) {
+  $(".field").unbind('click');
+  var div = document.getElementById("end-of-game");
   if (game.hasWinner()) {
-    return 'The Winner is ' + game.declareWinner();
+    div.textContent = 'The Winner is ' + game.declareWinner();
   }
   else if (game.isDraw()) {
-    return 'GAME OVER. No one wins this time!';
+    div.textContent = 'GAME OVER. No one wins this time!';
   }
+  document.getElementById("update").style.display = 'none';
+  document.getElementById("new-game").innerHTML = `
+  <button type="button" onclick="location.reload()"
+  class="btn btn-primary btn-lg">Start a New Game</button>`
+  ;
 };
 
 function checkGameOver(game) {
-  var div = document.getElementById("end-of-game");
-  div.textContent = gameOverMessage(game);
-  if (div.innerHTML != "") {
-    $(".field").unbind('click');
-    document.getElementById("update").style.display = 'none';
-    document.getElementById("new-game").innerHTML = `
-    <button type="button" onclick="location.reload()"
-    class="btn btn-primary btn-lg">Start a New Game</button>`
-    ;
+  if (game.hasWinner() || game.isDraw()){
+    gameOverMessage(game);
   }
 }
 
