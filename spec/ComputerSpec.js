@@ -3,12 +3,12 @@ describe("Computer", function(){
   beforeEach(function(){
     computer = new Computer("Samantha", "♜");
 
-    player2 = {
+    player = {
       name: "Alan",
       symbol: "O"
     };
 
-    game = new Game(player2,computer)
+    game = new Game(player,computer)
   });
 
   describe('#possibleMoves', function(){
@@ -24,11 +24,13 @@ describe("Computer", function(){
 
     it('assign a score of 1 to a game where Computer wins', function(){
       game.currentBoard = ['♜','♜','♜',3,4,'O','O',7,8];
+      game.currentPlayer = player;
       expect(computer.score(game)).toEqual(1);
     });
 
     it('assign a score of -1 to a game where opponent wins', function(){
       game.currentBoard = ['O','O','O',3,4,'♜','♜',7,'♜'];
+      game.currentPlayer = computer;
       expect(computer.score(game)).toEqual(-1);
     });
 
