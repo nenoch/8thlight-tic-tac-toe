@@ -67,11 +67,20 @@ Game.prototype.hasWinner = function() {
       this.currentBoard[a] === this.currentBoard[b] &&
       this.currentBoard[b] === this.currentBoard[c] &&
       this.currentBoard[b] === this.currentBoard[d]) {
-      this.winner = this.currentPlayer;
+      this.winner = this.setWinner(this.currentBoard[a]);
       return true;
     }
   }
   return false;
+};
+
+Game.prototype.setWinner = function(symbol) {
+  if (this.players[0].symbol === symbol) {
+    return this.players[0];
+  }
+  else {
+    return this.players[1];
+  }
 };
 
 Game.prototype.declareWinner = function () {

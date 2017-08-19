@@ -67,17 +67,17 @@ describe("Game", function() {
   describe("#isDraw", function(){
 
     it("is true when there are no available fields", function(){
-      game.currentBoard = ['X','X','O','O','O','X','X','O','X'];
+      game.currentBoard = ['X','O','X','X','O','X','O','O','X','O','X','X','O','X','O','O'];;
       expect(game.isDraw()).toEqual(true);
     });
 
     it("is false when fields are still available", function(){
-      game.currentBoard = ['X',1,2,'O',4, 5,'X','O','X'];
+      game.currentBoard = ['X',1,2,'O',4, 5,'X','O','X', 9, 10, 11, 12, 13, 14, 15];
       expect(game.isDraw()).toEqual(false);
     });
 
     it("is false when there is a winner", function(){
-      game.currentBoard = ['X','X','X','X','O','O','O','X','O'];
+      game.currentBoard = ['X','X','X','X','O','X','O','O','X','O','X','X','O','X','O','O'];
       expect(game.isDraw()).toEqual(false);
     });
 
@@ -101,13 +101,11 @@ describe("Game", function() {
 
     it("declares the name of the winner if there is one", function(){
       game.currentBoard = ['X','X','X','X','O','O','O',7,8,9,10,11,12,13,14,15];
-      game.winner = player1;
       expect(game.declareWinner()).toEqual("Mike");
     });
 
     it("does not declare the name of the winner if there is none", function(){
       game.currentBoard = ['X','O','X','X','O','X','O','O','X','O','X','X','O','X','O','O'];
-      game.winner;
       expect(game.declareWinner()).toEqual(undefined);
     });
 

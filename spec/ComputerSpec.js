@@ -1,4 +1,4 @@
-xdescribe("Computer", function(){
+describe("Computer", function(){
 
   beforeEach(function(){
     computer = new Computer("Samantha", "♜");
@@ -8,7 +8,7 @@ xdescribe("Computer", function(){
       symbol: "O"
     };
 
-    game = new Game(player,computer)
+    game = new Game(computer, player)
   });
 
   describe('#possibleMoves', function(){
@@ -23,19 +23,17 @@ xdescribe("Computer", function(){
   describe('#score', function(){
 
     it('assign a score of 1 to a game where Computer wins', function(){
-      game.currentBoard = ['♜','♜','♜',3,4,'O','O',7,8];
-      game.currentPlayer = player;
+      game.currentBoard = ['♜','♜','♜','♜','O','O','O',7,8,9,10,11,12,13,14,15];
       expect(computer.score(game)).toEqual(1);
     });
 
     it('assign a score of -1 to a game where opponent wins', function(){
-      game.currentBoard = ['O','O','O',3,4,'♜','♜',7,'♜'];
-      game.currentPlayer = computer;
+      game.currentBoard = ['♜','♜','♜',3,'O','O','O','O',8,9,'♜',11,12,13,14,15];
       expect(computer.score(game)).toEqual(-1);
     });
 
     it('assign a score of 0 to a game ended in a draw', function(){
-      game.currentBoard = ['♜','♜','O','O','O','♜','♜','O','♜'];
+      game.currentBoard = ['♜','O','♜','♜','O','♜','O','O','♜','O','♜','♜','O','♜','O','O'];
       expect(computer.score(game)).toEqual(0);
     });
 
@@ -52,7 +50,7 @@ xdescribe("Computer", function(){
 
   describe('#resetBoard', function(){
 
-    it('cancels a given move', function(){
+    it('deletes a given move', function(){
       game.currentBoard = ['♜','♜',2,3,4,'O','O',7,8];
       var move = 1;
       computer.resetBoard(game, move)

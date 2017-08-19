@@ -22,7 +22,7 @@ Computer.prototype.score = function(game) {
 };
 
 Computer.prototype.minimaxMove = function(game, depth = 0, movesScore = {}) {
-var possibleMoves = this.possibleMoves(game);
+  var possibleMoves = this.possibleMoves(game);
 
   if (game.isDraw() || game.hasWinner()) {
     return this.score(game);
@@ -36,13 +36,16 @@ var possibleMoves = this.possibleMoves(game);
   }
 
   if (depth === possibleMoves.length) {
+    console.log("best");
     return this.bestMove(movesScore);
   }
 
   if (game.currentPlayer === this) {
+    console.log("highest");
     return this.highestScore(movesScore);
   }
   else {
+    console.log("lowest");
     return this.lowestScore(movesScore);
   }
 
