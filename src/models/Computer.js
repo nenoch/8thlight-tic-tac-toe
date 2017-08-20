@@ -1,7 +1,7 @@
 function Computer(name, symbol) {
   this.name = name;
   this.symbol = symbol;
-  this.maxDepth = 1;
+  // this.maxDepth = 1;
 }
 
 Computer.prototype.possibleMoves = function(game) {
@@ -22,7 +22,7 @@ Computer.prototype.score = function(game) {
   }
 };
 
-Computer.prototype.minimaxMove = function(game, depth = 0, movesScore = {}) {
+Computer.prototype.minimaxMove = function(game, depth = 0, alpha= -Infinity, beta= +Infinity, movesScore = {}) {
   var possibleMoves = this.possibleMoves(game);
 
   if (game.isDraw() || game.hasWinner()) {
@@ -32,20 +32,44 @@ Computer.prototype.minimaxMove = function(game, depth = 0, movesScore = {}) {
   for(var i = 0; i < possibleMoves.length; i++) {
     var move = possibleMoves[i];
     game.makeAmove(move);
-    movesScore[move] = this.minimaxMove(game, depth+=1, {});
+    var result = this.minimaxMove(game, depth+=1, alpha, beta, {});
+    // movesScore[move] = this.minimaxMove(game, depth+=1, alpha, beta, {});
     this.resetBoard(game, move);
+    if (game.currentPlayer === this) {
+      if (result > alpha) {
+        alpha = result;
+        if (depth === 1) {
+          return move;
+        }
+      } else if (alpha >= beta) {
+      return alpha;
+      }
+      return alpha;
+    // return this.highestScore(movesScore);
+    } else {
+      if (result < beta) {
+        beta = result;
+        if (depth === 1) {
+          return move;
+        }
+      } else if (beta <= alpha) {
+        return beta;
+      }
+      return beta;
+      // return this.lowestScore(movesScore);
+    }
   }
 
-  if (depth === possibleMoves.length) {
-    return this.bestMove(movesScore);
-  }
+  // if (depth === possibleMoves.length) {
+  //   return this.bestMove(movesScore);
+  // }
 
-  if (game.currentPlayer === this) {
-    return this.highestScore(movesScore);
-  }
-  else {
-    return this.lowestScore(movesScore);
-  }
+  // if (game.currentPlayer === this) {
+  //   return this.highestScore(movesScore);
+  // }
+  // else {
+  //   return this.lowestScore(movesScore);
+  // }
 
 };
 
@@ -73,4 +97,5 @@ Computer.prototype.bestMove = function(hashmap) {
 Computer.prototype.resetBoard = function(game, move) {
   game.currentBoard[move] = move;
   game.switchTurn();
+  console.log("switching called by minimax");
 };

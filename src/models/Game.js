@@ -15,6 +15,7 @@ Game.prototype.firstMover = function(player) {
 };
 
 Game.prototype.switchTurn = function() {
+  console.log("we're switching!");
   var index = this.players.indexOf(this.currentPlayer) === 0 ? 1 : 0;
   this.currentPlayer = this.players[index];
 };

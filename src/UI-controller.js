@@ -135,6 +135,7 @@ function showBoard(game) {
 
 // why does it have to be within the click??
 function playTheGame(game) {
+  console.log(game.currentPlayer);
   $(".field").click(function(){
       var num = this.id;
       game.makeAmove(num);
@@ -176,6 +177,7 @@ function checkGameOver(game) {
 
 function computersTurn(game) {
   if (game.currentPlayer instanceof Computer) {
+    console.log("They called me!");
     var num = game.currentPlayer.minimaxMove(game);
     var div = document.getElementById(num);
     setTimeout(function() {
