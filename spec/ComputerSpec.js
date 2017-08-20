@@ -14,8 +14,8 @@ describe("Computer", function(){
   describe('#possibleMoves', function(){
 
     it('returns an array of possible moves', function(){
-      game.currentBoard = ['X',1,'X',3,4,'O',6,7,8];
-      expect(computer.possibleMoves(game)).toEqual([1,3,4,6,7,8]);
+      game.currentBoard = ['♜',1,'♜','♜','O',5,'O',7,8,9,10,11,12,13,14,15];
+      expect(computer.possibleMoves(game)).toEqual([1,5,7,8,9,10,11,12,13,14,15]);
     });
 
   });
@@ -42,7 +42,7 @@ describe("Computer", function(){
   describe('#minimaxMove', function(){
 
     it('calculates the move with the highest chances of victory', function(){
-      game.currentBoard = ['♜','♜',2,3,'♜','O','O','O',8];
+      game.currentBoard = ['♜','♜',2,'♜','O','O','O',7,8,9,10,11,12,13,14,15];
       expect(computer.minimaxMove(game)).toEqual(2);
     });
 
