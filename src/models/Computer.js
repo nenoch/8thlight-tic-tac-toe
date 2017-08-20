@@ -1,6 +1,7 @@
 function Computer(name, symbol) {
   this.name = name;
   this.symbol = symbol;
+  this.maxDepth = 1;
 }
 
 Computer.prototype.possibleMoves = function(game) {
@@ -23,8 +24,6 @@ Computer.prototype.score = function(game) {
 
 Computer.prototype.minimaxMove = function(game, depth = 0, movesScore = {}) {
   var possibleMoves = this.possibleMoves(game);
-  console.log("moves", possibleMoves.length);
-  console.log("depth", depth);
 
   if (game.isDraw() || game.hasWinner()) {
     return this.score(game);
@@ -33,12 +32,11 @@ Computer.prototype.minimaxMove = function(game, depth = 0, movesScore = {}) {
   for(var i = 0; i < possibleMoves.length; i++) {
     var move = possibleMoves[i];
     game.makeAmove(move);
-    movesScore[move] = this.minimaxMove(game, depth += 1, {});
+    movesScore[move] = this.minimaxMove(game, depth+=1, {});
     this.resetBoard(game, move);
   }
 
   if (depth === possibleMoves.length) {
-    console.log("I am here");
     return this.bestMove(movesScore);
   }
 

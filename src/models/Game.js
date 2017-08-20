@@ -1,6 +1,7 @@
 function Game(player1, player2) {
   this.players = [player1, player2];
   this.currentBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+  // this.currentBoard = ['♛','♛',2,'♛','O','O','O',7,8,9,10,11,12,13,14,15];
   this.currentPlayer = this.players[0];
   this.winner;
 }

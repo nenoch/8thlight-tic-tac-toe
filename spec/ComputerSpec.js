@@ -42,8 +42,9 @@ describe("Computer", function(){
   describe('#minimaxMove', function(){
 
     it('calculates the move with the highest chances of victory', function(){
-      game.currentBoard = ['♜','♜',2,'♜','O','O','O',7,8,9,10,11,12,13,14,15];
-      expect(computer.minimaxMove(game)).toEqual(2);
+      // game.currentBoard = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+      game.currentBoard = ['♜',1,'♜','♜','O','O','O',7,8,9,10,11,12,13,14,15];
+      expect(computer.minimaxMove(game)).toEqual(1);
     });
 
   });
@@ -51,10 +52,10 @@ describe("Computer", function(){
   describe('#resetBoard', function(){
 
     it('deletes a given move', function(){
-      game.currentBoard = ['♜','♜',2,3,4,'O','O',7,8];
+      game.currentBoard = ['♜','♜',2,3,4,'O','O',7,8,9,10,11,12,13,14,15];
       var move = 1;
       computer.resetBoard(game, move)
-      expect(game.currentBoard).toEqual(['♜',1,2,3,4,'O','O',7,8]);
+      expect(game.currentBoard).toEqual(['♜',1,2,3,4,'O','O',7,8,9,10,11,12,13,14,15]);
     });
 
   });
