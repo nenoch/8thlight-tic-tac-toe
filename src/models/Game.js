@@ -23,9 +23,7 @@ Game.prototype.makeAmove = function(num) {
   var mark = this.currentPlayer.symbol;
   if (this.currentBoard[num] == num) {
     this.currentBoard[num] = mark;
-    if (!(this.hasWinner() || this.isDraw())) {
-      this.switchTurn();
-    }
+    this.switchTurn();
   } else {
     alert('You can\'t pick this field. Try with an empty one.');
   }
