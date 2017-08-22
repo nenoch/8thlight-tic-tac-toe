@@ -10,59 +10,66 @@ Computer.prototype.possibleMoves = function(game) {
   });
 };
 
-Computer.prototype.score = function(game) {
+Computer.prototype.score = function(game, depth) {
   if (game.hasWinner() && (game.declareWinner() !== this.name)) {
-    return -1;
+    return -1000/depth;
   }
   else if (game.hasWinner() && (game.declareWinner() == this.name)){
-    return 1;
+    return 1000/depth;
   }
   else if (game.isDraw()){
     return 0;
   }
 };
 
-Computer.prototype.minimaxMove = function (game, depth = this.maxDepth, alpha = -Infinity, beta = +Infinity, computerPlaying = true){
-  if (depth === 0 || game.isDraw() || game.hasWinner()) {
+Computer.prototype.minimaxMove = function(game, depth = this.maxDepth, alpha = -Infinity, beta = +Infinity, computerPlaying = true){
+  if (depth === 0 ) {
     console.log("terminal state");
-    return;
+    return this.score(game, depth);
   }
 
   var possibleMoves = this.possibleMoves(game);
 
-  if (computerPlaying === true) {
+  if (computerPlaying) {
+    console.log("cp", computerPlaying);
+    var bestValue = -1000;
+
     for(var i = 0; i < possibleMoves.length; i++){
       var move = possibleMoves[i];
-      console.log("max move", move);
-      // something has to happen to the game
-      console.log("max player", game.currentPlayer)
       game.makeAmove(move);
-      alpha = Math.max(alpha, this.minimaxMove(game, depth-1, alpha, beta, false));
+      // minimaxValue = this.minimaxMove(game, depth-1, alpha, beta, false);
+      bestValue = Math.max(bestValue, this.minimaxMove(game, depth-1, alpha, beta, !computerPlaying));
       this.resetBoard(game, move);
+      alpha = Math.max(alpha, bestValue);
+      console.log("max alpha", alpha);
       if (alpha >= beta) {
         console.log("max pruning");
-        return;
+        return bestValue;
         //break
       }
     }
-    return alpha;
+    console.log('max bestValue', bestValue);
+    return bestValue;
   }
   else {
+    var bestValue = 1000;
+
     for(var i = 0; i < possibleMoves.length; i++){
       var move = possibleMoves[i];
-      console.log("min move", move);
-      // something has to happen to the game
-      console.log("min player", game.currentPlayer)
       game.makeAmove(move);
-      beta = Math.min(beta, this.minimaxMove(game, depth-1, alpha, beta, true));
+      // var minimaxValue = this.minimaxMove(game, depth-1, alpha, beta, true);
+      bestValue = Math.min(bestValue, this.minimaxMove(game, depth-1, alpha, beta, !computerPlaying));
       this.resetBoard(game, move);
+      beta = Math.min(beta, bestValue);
+      console.log("min beta", beta);
       if (alpha >= beta) {
         console.log("min pruning");
-        return;
+        return bestValue;
         //break
       }
     }
-    return beta;
+    console.log('min bestValue', bestValue);
+    return bestValue;
   }
 }
 
