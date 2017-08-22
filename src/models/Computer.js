@@ -1,7 +1,7 @@
 function Computer(name, symbol) {
   this.name = name;
   this.symbol = symbol;
-  // this.maxDepth = 1;
+  this.maxDepth = 6;
 }
 
 Computer.prototype.possibleMoves = function(game) {
@@ -14,7 +14,7 @@ Computer.prototype.score = function(game) {
   if (game.hasWinner() && (game.declareWinner() !== this.name)) {
     return -1;
   }
-  else if (game.hasWinner() && (game.declareWinner() === this.name)){
+  else if (game.hasWinner() && (game.declareWinner() == this.name)){
     return 1;
   }
   else if (game.isDraw()){
@@ -22,56 +22,49 @@ Computer.prototype.score = function(game) {
   }
 };
 
-Computer.prototype.minimaxMove = function(game, depth = 0, alpha= -Infinity, beta= +Infinity, movesScore = {}) {
+Computer.prototype.minimaxMove = function (game, depth = this.maxDepth, alpha = -Infinity, beta = +Infinity, computerPlaying = true){
+  if (depth === 0 || game.isDraw() || game.hasWinner()) {
+    console.log("terminal state");
+    return;
+  }
+
   var possibleMoves = this.possibleMoves(game);
 
-  if (game.isDraw() || game.hasWinner()) {
-    return this.score(game);
-  }
-
-  for(var i = 0; i < possibleMoves.length; i++) {
-    var move = possibleMoves[i];
-    game.makeAmove(move);
-    var result = this.minimaxMove(game, depth+=1, alpha, beta, {});
-    // movesScore[move] = this.minimaxMove(game, depth+=1, alpha, beta, {});
-    this.resetBoard(game, move);
-    if (game.currentPlayer === this) {
-      if (result > alpha) {
-        alpha = result;
-        if (depth === 1) {
-          return move;
-        }
-      } else if (alpha >= beta) {
-      return alpha;
+  if (computerPlaying === true) {
+    for(var i = 0; i < possibleMoves.length; i++){
+      var move = possibleMoves[i];
+      console.log("max move", move);
+      // something has to happen to the game
+      console.log("max player", game.currentPlayer)
+      game.makeAmove(move);
+      alpha = Math.max(alpha, this.minimaxMove(game, depth-1, alpha, beta, false));
+      this.resetBoard(game, move);
+      if (alpha >= beta) {
+        console.log("max pruning");
+        return;
+        //break
       }
-      return alpha;
-    // return this.highestScore(movesScore);
-    } else {
-      if (result < beta) {
-        beta = result;
-        if (depth === 1) {
-          return move;
-        }
-      } else if (beta <= alpha) {
-        return beta;
-      }
-      return beta;
-      // return this.lowestScore(movesScore);
     }
+    return alpha;
   }
-
-  // if (depth === possibleMoves.length) {
-  //   return this.bestMove(movesScore);
-  // }
-
-  // if (game.currentPlayer === this) {
-  //   return this.highestScore(movesScore);
-  // }
-  // else {
-  //   return this.lowestScore(movesScore);
-  // }
-
-};
+  else {
+    for(var i = 0; i < possibleMoves.length; i++){
+      var move = possibleMoves[i];
+      console.log("min move", move);
+      // something has to happen to the game
+      console.log("min player", game.currentPlayer)
+      game.makeAmove(move);
+      beta = Math.min(beta, this.minimaxMove(game, depth-1, alpha, beta, true));
+      this.resetBoard(game, move);
+      if (alpha >= beta) {
+        console.log("min pruning");
+        return;
+        //break
+      }
+    }
+    return beta;
+  }
+}
 
 Computer.prototype.highestScore = function(hashmap) {
   var scores = [];
